@@ -12,6 +12,9 @@ h1 {
     font-size: 12px;
 }
 
-.reality-line {
-    filter: blur(10px)
-}
+.luogo {
+    position: absolute;
+    z-index: -1;
+    margin-left: 9px;
+    margin-right: 9px
+  }

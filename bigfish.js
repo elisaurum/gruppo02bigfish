@@ -41,7 +41,7 @@ const personaggi = Object.keys(datasetprova[0]).slice(3)
 const xScale = d3.scaleBand()
 .domain(personaggi)
 .range([marginLeft, width - marginRight])
-.padding(7)
+.padding(20)
 
 
 
@@ -85,37 +85,23 @@ svg.append("g")
 // Estrazione dei colori dalla colonna "COLOR" del dataset
 const colors = datasetprova.map(d => d["COLOR"]);
 
-// Calcolo delle altezze dei rettangoli in base alle differenze tra i tempi "START" consecutivi
-const heightData = datasetprova.map((d, i, arr) => i < arr.length - 1 ? arr[i + 1]["START"] - d["START"] : 0);
+// Calcolo delle differenze tra i tempi di START consecutivi
+const heightData = datasetprova.map((d, i, arr) => i < arr.length - 1 ? (arr[i + 1]["START"] - d["START"]) : 0);
 
-// Aggiunta dei rettangoli
-gruppi.append("rect")
-.attr("height", (d, i) => {
-return sScale(heightData[i]); // Calcolo dell'altezza dei rettangoli (unico modo per non avere errore nella parte dopo)
-})
-.attr("width", width - marginLeft - marginRight)
-.attr("x", marginLeft)
-.attr("y", d => sScale(d["START"]))
-.attr("fill", (d, i) => colors[i]);
+// Selezione di tutti i div dell'HTML
+d3.select("body")
+    .selectAll("div.luogo")
+    .data(datasetprova)
+    .join("div")
+    .attr("class", "luogo")
+    .style("height", (d, i) => sScale(heightData[i]) + "px")
+    .style("width", (width - marginLeft - marginRight) + "px")
+    .style("position", "absolute")
+    .style("top", d => (sScale(d["START"]) + marginTop/1.4) + "px")  // Regola il valore top
+    .style("left", marginLeft + "px")
+    .style("background-color", (d, i) => colors[i]);
 
 
-
-// Funzione per determinare se il colore dovrebbe essere chiaro o scuro
-function isColorLight(color) {
-const rgb = d3.color(color).rgb();
-// Calcola la luminosità del colore
-const brightness = (rgb.r * 0.299 + rgb.g * 0.587 + rgb.b * 0.114) / 255;
-return brightness > 0.5; // Se la luminosità è superiore a 0.5, il colore è considerato chiaro
-}
-
-// Aggiunta del testo al centro di ciascun rettangolo
-gruppi.append("text")
-.text((d, i) => d["PLACE"]) // Prende il valore dalla colonna PLACE
-.attr("x", marginLeft + (width - marginLeft - marginRight) / 2)
-.attr("y", (d, i) => sScale(d["START"]) + sScale(heightData[i])/2.5)
-.attr("dy", "-0.7em")
-.attr("text-anchor", "middle")
-.attr("fill", d => isColorLight(d["COLOR"]) ? "black" : "white") // Esegue la funzione isColorLight riferendosi al valore HEX della colonna COLOR e determina se rendere il testo bianco o nero
 
 // Mappatura dei colori per personaggio
 const colorMap = {
@@ -152,7 +138,6 @@ svg.selectAll("line" + personaggio)
     .attr("y2", d => Math.min(sScale(d.nextStart), yScale.range()[1])) // Per farlo finire quando finisce l'asse y
     .attr("stroke", colorMap[personaggio])
     .attr("stroke-width", 12)
-
 });
 
 // Return del nodo SVG
