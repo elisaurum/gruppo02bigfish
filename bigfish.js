@@ -56,6 +56,7 @@ svg.append("g")
 .call(d3.axisLeft(yScale)
 .tickFormat(d => d === 120 ? "02:00" : d)
 .tickValues([yScale.domain()[1]]))
+.call((g) => g.select (".domain").remove())
 .attr("class", "axis-label");
 
 // Aggiungo l'asse a sinistra con sScale con i tick corrispondenti ai valori della scala (e quindi all'inizio della scena)
@@ -64,6 +65,7 @@ svg.append("g")
 .call(d3.axisLeft(sScale)
 .tickFormat(formatTime)
 .tickValues(datasetprova.map(d => d["START"])))
+.call((g) => g.select (".domain").remove())
 .selectAll(".tick text")
 .attr("class", "axis-label");
 
@@ -102,7 +104,6 @@ d3.select("body")
     .style("background-color", (d, i) => colors[i]);
 
 
-
 // Mappatura dei colori per personaggio
 const colorMap = {
     STREGA: "grey",
@@ -132,12 +133,14 @@ svg.selectAll("line" + personaggio)
     .data(lineData.filter(d => d.isPresent))
     .enter()
     .append("line")
+    .attr("class", "line")
     .attr("x1", xScale(personaggio) + xScale.bandwidth() / 2)
     .attr("x2", xScale(personaggio) + xScale.bandwidth() / 2)
     .attr("y1", d => sScale(d.start))
     .attr("y2", d => Math.min(sScale(d.nextStart), yScale.range()[1])) // Per farlo finire quando finisce l'asse y
     .attr("stroke", colorMap[personaggio])
     .attr("stroke-width", 12)
+    .style("z-index", 1)
 });
 
 // Return del nodo SVG
