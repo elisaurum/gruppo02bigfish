@@ -56,8 +56,7 @@ svg.append("g")
 .call(d3.axisLeft(yScale)
 .tickFormat(d => d === 120 ? "02:00" : d)
 .tickValues([yScale.domain()[1]]))
-.call((g) => g.select (".domain").remove())
-.attr("class", "axis-label");
+.call((g) => g.select (".domain").remove());
 
 // Aggiungo l'asse a sinistra con sScale con i tick corrispondenti ai valori della scala (e quindi all'inizio della scena)
 svg.append("g")
@@ -65,9 +64,8 @@ svg.append("g")
 .call(d3.axisLeft(sScale)
 .tickFormat(formatTime)
 .tickValues(datasetprova.map(d => d["START"])))
-.call((g) => g.select (".domain").remove())
-.selectAll(".tick text")
-.attr("class", "axis-label");
+.attr("class", "numbers")
+.call((g) => g.select (".domain").remove());
 
 // Aggiungo l'asse x e aggiusto le etichette
 svg.append("g")
@@ -79,7 +77,7 @@ svg.append("g")
 .attr("class", "axis-label")
 .attr("dx", "10 em") // Regola la posizione orizzontale
 .attr("dy", "0 em") // Regola la posizione verticale
-.attr("transform", "rotate(-90)")
+.attr("transform", "rotate(-90), translate(0,3)")
 .text(d => d.replace(/_/g, ' ')) // Per togliere l'underscore
 
 
@@ -99,7 +97,7 @@ d3.select("body")
     .style("height", (d, i) => sScale(heightData[i]) + "px")
     .style("width", (width - marginLeft - marginRight) + "px")
     .style("position", "absolute")
-    .style("top", d => (sScale(d["START"]) + marginTop/1.4) + "px")  // Regola il valore top
+    .style("top", d => (sScale(d["START"]) + marginTop/1.13) + "px")  // Regola il valore top
     .style("left", marginLeft + "px")
     .style("background-color", (d, i) => colors[i]);
 
