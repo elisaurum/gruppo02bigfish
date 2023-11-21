@@ -144,3 +144,42 @@ svg.selectAll("line" + personaggio)
 
 // Return del nodo SVG
 document.body.appendChild(svg.node());
+
+
+// Scrollama
+var scrolly = document.querySelector("#scrolly");
+	var article = scrolly.querySelector("article");
+	var step = article.querySelectorAll(".luogo");
+
+	// initialize the scrollama
+	var scroller = scrollama();
+
+	// scrollama event handlers
+	function handleStepEnter(response) {
+		// response = { element, direction, index }
+		console.log(response);
+		// add to color to current step
+		response.element.classList.add("is-active");
+	}
+
+	function handleStepExit(response) {
+		// response = { element, direction, index }
+		console.log(response);
+		// remove color from current step
+		response.element.classList.remove("is-active");
+	}
+
+	function init() {
+		scroller
+			.setup({
+				step: "#scrolly article .luogo",
+				debug: false,
+				offset: 0.5
+			})
+			.onStepEnter(handleStepEnter)
+			.onStepExit(handleStepExit);
+
+	}
+
+	// kick things off
+	init();

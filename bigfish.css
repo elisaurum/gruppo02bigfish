@@ -45,6 +45,7 @@ svg {
     display: flex;
     justify-content: center;
     align-items: center;
+    transition: all .5s ease-in-out;
 }
 
 #reality1, #reality2, #reality3, #reality4, #reality5, #reality6, #reality7, #reality8 {
@@ -52,10 +53,29 @@ svg {
     backdrop-filter: blur(6px)
 }
 
+.luogo img {
+    opacity: 0.3;
+    transition: all .5s ease-in-out
+}
+
 .illustrazioni {
-    width: 60%;
+    width: 40%;
 }
 
 .smaller-illustrazioni {
-    height: 80%
+    height: 60%
+}
+
+.luogo.is-active img {
+    transition: all .5s ease-in-out;
+    transform: scale(150%);
+    opacity: 1;
+    z-index: 2
+}
+
+.luogo.is-active .smaller-illustrazioni {
+    transition: all .5s ease-in-out;
+    transform: scale(240%);
+    opacity: 1;
+    z-index: 2
 }
