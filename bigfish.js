@@ -1,4 +1,5 @@
 // prova commento
+//altro commento
 
 // Importa la libreria D3
 import * as d3 from "https://cdn.jsdelivr.net/npm/d3@7/+esm";
@@ -29,7 +30,7 @@ function formatTime(minutes) {
 // Creazione di una scala lineare da 0 a 120
 const yScale = d3.scaleLinear()
 .range([marginTop, height - marginBottom])
-.domain([0, 120])
+.domain([0, 200])
 
 // Creazione di una scala lineare basata sulla colonna "START" del dataset
 const sScale = d3.scaleLinear()
