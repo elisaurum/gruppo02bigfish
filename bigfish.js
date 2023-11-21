@@ -56,7 +56,8 @@ svg.append("g")
 .call(d3.axisLeft(yScale)
 .tickFormat(d => d === 120 ? "02:00" : d)
 .tickValues([yScale.domain()[1]]))
-.call((g) => g.select (".domain").remove());
+.call((g) => g.select (".domain").remove())
+.attr("class", "numbers");
 
 // Aggiungo l'asse a sinistra con sScale con i tick corrispondenti ai valori della scala (e quindi all'inizio della scena)
 svg.append("g")
@@ -94,7 +95,7 @@ d3.select("body")
     .data(datasetprova)
     .join("div")
     .attr("class", "luogo")
-    .style("height", (d, i) => sScale(heightData[i]) + "px")
+    .style("height", (d, i, nodes) => i < nodes.length - 1 ? (sScale(heightData[i]) - 150) + "px" : sScale(heightData[i]) + "px")
     .style("width", (width - marginLeft - marginRight) + "px")
     .style("position", "absolute")
     .style("top", d => (sScale(d["START"]) + marginTop/1.13) + "px")  // Regola il valore top
@@ -137,7 +138,7 @@ svg.selectAll("line" + personaggio)
     .attr("y1", d => sScale(d.start))
     .attr("y2", d => Math.min(sScale(d.nextStart), yScale.range()[1])) // Per farlo finire quando finisce l'asse y
     .attr("stroke", colorMap[personaggio])
-    .attr("stroke-width", 12)
+    .attr("stroke-width", 6)
     .style("z-index", 1)
 });
 

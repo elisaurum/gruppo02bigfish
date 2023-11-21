@@ -44,13 +44,18 @@ svg {
     margin-right: 9px;
     display: flex;
     justify-content: center;
-    align-items: center
+    align-items: center;
+}
+
+#reality1, #reality2, #reality3, #reality4, #reality5, #reality6, #reality7, #reality8 {
+    z-index: 1;
+    backdrop-filter: blur(6px)
 }
 
 .illustrazioni {
-    width: 65%;
+    width: 60%;
 }
 
 .smaller-illustrazioni {
-    width: 20%
+    height: 80%
 }
