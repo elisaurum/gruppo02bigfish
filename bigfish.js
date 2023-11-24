@@ -1,5 +1,3 @@
-// prova commento
-
 // Importa la libreria D3
 import * as d3 from "https://cdn.jsdelivr.net/npm/d3@7/+esm";
 
@@ -147,6 +145,7 @@ svg.selectAll("line" + personaggio)
 // Return del nodo SVG
 document.body.appendChild(svg.node());
 
+
 // Scrollama
 var scrolly = document.querySelector("#scrolly");
 	var article = scrolly.querySelector("article");
@@ -173,7 +172,7 @@ var scrolly = document.querySelector("#scrolly");
 	function init() {
 		scroller
 			.setup({
-				step: "#scrolly article .luogo",
+				step: "#scrolly article .luogo:not(.exclude)",
 				debug: false,
 				offset: 0.5
 			})

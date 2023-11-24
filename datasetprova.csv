@@ -4,8 +4,8 @@ START,PLACE,COLOR,STREGA,AMOS_CALLOWAY,JENNY,DON_PRICE,SANDRA,EDWARD,KARL,NORTHE
 9,casa strega,#5d715e,P,,,P,,P,,,,,
 15,realtà,,,,,,,P,,,,,
 19,Ashton,#4F5629,,,,P,,P,,,,,
-23,grotta,#344f2f,,,,,,P,P,,,,
-28,Spectre,#B4B6D9,,,P,,,P,,P,,,
+23,grotta,#243523,,,,,,P,P,,,,
+28,Spectre,#8BAA55,,,P,,,P,,P,,,
 40,foresta,#0b1616,,,,,,P,,,,,
 41,realtà,,,,,,,P,,,,,
 46,circo,#090405,,P,,,P,P,P,,,,
@@ -16,13 +16,13 @@ START,PLACE,COLOR,STREGA,AMOS_CALLOWAY,JENNY,DON_PRICE,SANDRA,EDWARD,KARL,NORTHE
 69,Vietnam,#070405,,,,,,P,,P,,
 73,casa Edward,#7a844d,,,,,P,P,,,,,
 75,realtà,,,,,,,P,,,,,
-82,ufficio,#0F1426,,,,,,P,,,,,
+82,ufficio,#7d6a46,,,,,,P,,,,,
 84,banca,#e4ded4,,,,,,P,,P,,,
 88,realtà,,,,,,,P,,,,,
 92,Spectre,#3e5700,,,,,,P,,,,,
-96,casa Jenny,#242B40,,,P,,,P,P,,,,
+96,casa Jenny,#6c646b,,,P,,,P,P,,,,
 97,realtà,,,,,,,P,,,,,
-101,ospedale,#e2e0dc,,,,,P,P,,,,P,P
+101,ospedale,#645e54,,,,,P,P,,,,P,P
 102,fiume,#233831,P,P,P,P,P,P,P,P,P,P,P
 106,realtà,,,,,,,P,,,,,
-119,lago,#292426,,,,,,P,,,,,
+119,lago,#151c1e,,,,,,P,,,,,

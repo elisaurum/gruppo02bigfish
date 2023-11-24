@@ -1,13 +1,13 @@
 @font-face {
     font-family: 'Tim Burton';
-    src: url('fonts/Sdfortimburtondemo-ALoW2.ttf') format('truetype');
+    src: url('fonts/alice-in-wonderland.ttf') format('truetype');
     font-weight: 500
 }
 
-@font-face {
+/* @font-face {
     font-family: 'Trinigan FG';
     src: url('fonts/trinigan-fg.ttf') format('truetype')
-}
+} */
 
 html {
     background-color: rgb(29, 29, 29);
@@ -16,8 +16,9 @@ html {
 h1 {
     font-family: 'Tim Burton', Arial, Helvetica, sans-serif;
     text-align: center;
-    padding: 10px;
+    padding: 4px;
     font-size: 50px;
+    font-weight: 10;
     color: white
 }
 
@@ -26,7 +27,7 @@ svg {
 }
 
 .numbers {
-    font-family:'Trinigan FG', Times, serif;
+    font-family:'Tim Burton', Times, serif;
     font-size: 15px;
     color: white
 }
@@ -53,20 +54,19 @@ svg {
     backdrop-filter: blur(6px)
 }
 
-.luogo img {
+.illustrazioni {
+    width: 40%;
     opacity: 0.3;
     transition: all .5s ease-in-out
 }
 
-.illustrazioni {
-    width: 40%;
-}
-
 .smaller-illustrazioni {
-    height: 60%
+    height: 60%;
+    opacity: 0.3;
+    transition: all .5s ease-in-out
 }
 
-.luogo.is-active img {
+.luogo.is-active .illustrazioni {
     transition: all .5s ease-in-out;
     transform: scale(150%);
     opacity: 1;
@@ -75,7 +75,11 @@ svg {
 
 .luogo.is-active .smaller-illustrazioni {
     transition: all .5s ease-in-out;
-    transform: scale(240%);
+    transform: scale(150%);
     opacity: 1;
     z-index: 2
+}
+
+.final-smaller-illustrazioni {
+    height: 100%
 }
