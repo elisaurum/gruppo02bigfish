@@ -61,7 +61,7 @@ svg {
 }
 
 #reality1, #reality2, #reality3, #reality4, #reality5, #reality6, #reality7, #reality8 {
-    z-index: 2;
+    z-index: 4;
     backdrop-filter: blur(6px)
 }
 
@@ -93,4 +93,8 @@ svg {
 
 .final-smaller-illustrazioni {
     height: 100%
+}
+
+.icon {
+    position: absolute;
 }

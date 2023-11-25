@@ -89,7 +89,7 @@ const colors = datasetprova.map(d => d["COLOR"]);
 // Calcolo delle differenze tra i tempi di START consecutivi
 const heightData = datasetprova.map((d, i, arr) => i < arr.length - 1 ? (arr[i + 1]["START"] - d["START"]) : 0);
 
-// Selezione di tutti i div dell'HTML
+// Selezione di tutti i div "luogo" dell'HTML
 d3.select("body")
     .selectAll("div.luogo")
     .data(datasetprova)
@@ -102,6 +102,7 @@ d3.select("body")
     .style("left", marginLeft + "px")
     .style("background-color", (d, i) => colors[i]);
 
+// Selezione di tutti i div "luogo-copia" dell'HTML (immagini)
 d3.select("body")
     .selectAll("div.luogo-copia")
     .data(datasetprova)
@@ -113,6 +114,9 @@ d3.select("body")
     .style("top", d => (sScale(d["START"]) + marginTop/1.13) + "px")  // Regola il valore top
     .style("left", marginLeft + "px")
     .style("background-color", "none");
+
+
+    
 
 // Mappatura dei colori per personaggio
 const colorMap = {
@@ -183,7 +187,7 @@ var scrolly = document.querySelector("#scrolly");
 	function init() {
 		scroller
 			.setup({
-				step: "#scrolly article .luogo-copia:not(.exclude)",
+				step: "#scrolly article .luogo-copia:not(.exclude)", //Per far sì che l'ultima immagine non sia soggetta a Scrollama
 				debug: false,
 				offset: 0.5
 			})
@@ -194,3 +198,41 @@ var scrolly = document.querySelector("#scrolly");
 
 	// kick things off
 	init();
+
+
+
+// Aggiungi l'icona
+const icon = d3.select("body")
+  .append("img")
+  .attr("id", "edward")
+  .attr("src", "icons/edward.png")
+  .style("position", "fixed")
+  .style("width", "50px")
+  .style("top", marginTop*1.5 + "px")
+  .style("left", "49.5%")
+  .style("z-index", 3)
+  .style("transform", "translateX(-50%)")
+  .style("opacity", 0) // Nascondi l'icona all'inizio
+
+// Aggiungi un gestore di eventi di scorrimento alla finestra
+window.addEventListener("scroll", function () {
+  // Ottieni il valore corrente di pageYOffset (scorrimento verticale)
+  const scrollY = window.scrollY;
+
+  // Verifica se lo scorrimento è compreso tra START = 0 e START = 119
+  if (scrollY >= sScale(0) && scrollY <= sScale(119)) {
+    // Calcola la posizione desiderata dell'icona in base allo scorrimento
+    const desiredTop = sScale.invert(scrollY) + marginTop*1.5;
+
+    // Imposta la posizione dell'icona in base alla posizione calcolata
+    icon.style("top", desiredTop + "px");
+
+    // Mostra l'icona se è nascosta
+    if (icon.style("opacity") === "0") {
+      icon.style("opacity", 1);
+    }
+  } else {
+    // Nascondi l'icona se lo scorrimento è al di fuori del range desiderato
+    icon.style("opacity", 0);
+  }
+});
