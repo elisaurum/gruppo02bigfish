@@ -102,18 +102,29 @@ d3.select("body")
     .style("left", marginLeft + "px")
     .style("background-color", (d, i) => colors[i]);
 
+d3.select("body")
+    .selectAll("div.luogo-copia")
+    .data(datasetprova)
+    .join("div")
+    .attr("class", "luogo-copia")
+    .style("height", (d, i, nodes) => i < nodes.length - 1 ? (sScale(heightData[i]) - 150) + "px" : sScale(heightData[i]) + "px")
+    .style("width", (width - marginLeft - marginRight) + "px")
+    .style("position", "absolute")
+    .style("top", d => (sScale(d["START"]) + marginTop/1.13) + "px")  // Regola il valore top
+    .style("left", marginLeft + "px")
+    .style("background-color", "none");
 
 // Mappatura dei colori per personaggio
 const colorMap = {
-    STREGA: "grey",
+    STREGA: "#B792F8",
     AMOS_CALLOWAY: "purple",
-    JENNY: "chartreuse",
+    JENNY: "#D77600",
     DON_PRICE: "cornflowerblue",
-    SANDRA: "yellow",
-    EDWARD: "red",
+    SANDRA: "#F8E436",
+    EDWARD: "#406C25",
     KARL: "brown",
     NORTHER_WINSLOW: "darkgreen",
-    JING_E_PING: "blue",
+    JING_E_PING: "#9b223b",
     WILL: "orangered",
     JOSEPHINE: "magenta"
 };
@@ -149,7 +160,7 @@ document.body.appendChild(svg.node());
 // Scrollama
 var scrolly = document.querySelector("#scrolly");
 	var article = scrolly.querySelector("article");
-	var step = article.querySelectorAll(".luogo");
+	var step = article.querySelectorAll(".luogo-copia");
 
 	// initialize the scrollama
 	var scroller = scrollama();
@@ -172,7 +183,7 @@ var scrolly = document.querySelector("#scrolly");
 	function init() {
 		scroller
 			.setup({
-				step: "#scrolly article .luogo:not(.exclude)",
+				step: "#scrolly article .luogo-copia:not(.exclude)",
 				debug: false,
 				offset: 0.5
 			})
