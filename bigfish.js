@@ -42,7 +42,7 @@ const personaggi = Object.keys(datasetprova[0]).slice(3)
 const xScale = d3.scaleBand()
 .domain(personaggi)
 .range([marginLeft, width - marginRight])
-.padding(20)
+.padding(12)
 
 
 
@@ -154,7 +154,7 @@ svg.selectAll("line" + personaggio)
     .attr("y1", d => sScale(d.start))
     .attr("y2", d => Math.min(sScale(d.nextStart), yScale.range()[1])) // Per farlo finire quando finisce l'asse y
     .attr("stroke", colorMap[personaggio])
-    .attr("stroke-width", 6)
+    .attr("stroke-width", 4)
     .style("z-index", 1)
 });
 

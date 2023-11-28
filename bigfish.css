@@ -62,6 +62,7 @@ svg {
 
 #reality1, #reality2, #reality3, #reality4, #reality5, #reality6, #reality7, #reality8 {
     z-index: 4;
+    -webkit-backdrop-filter: blur(6px); 
     backdrop-filter: blur(6px)
 }
 
@@ -72,7 +73,7 @@ svg {
 }
 
 .smaller-illustrazioni {
-    height: 60%;
+    height: 65%;
     opacity: 0.3;
     transition: all .5s ease-in-out
 }
