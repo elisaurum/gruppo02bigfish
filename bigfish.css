@@ -16,9 +16,16 @@ html {
 h1 {
     font-family: 'Tim Burton', Arial, Helvetica, sans-serif;
     text-align: center;
-    padding: 4px;
-    font-size: 50px;
+    padding: 0 4px;
+    font-size: 70px;
     font-weight: 10;
+    color: white
+}
+
+p {
+    font-family: 'Tim Burton', Arial, Helvetica, sans-serif;
+    text-align: center;
+    font-size: 40px;
     color: white
 }
 
@@ -62,8 +69,8 @@ svg {
 
 #reality1, #reality2, #reality3, #reality4, #reality5, #reality6, #reality7, #reality8 {
     z-index: 4;
+    backdrop-filter: blur(6px);
     -webkit-backdrop-filter: blur(6px); 
-    backdrop-filter: blur(6px)
 }
 
 .illustrazioni {

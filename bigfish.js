@@ -3,12 +3,12 @@ import * as d3 from "https://cdn.jsdelivr.net/npm/d3@7/+esm";
 
 const datasetprova = await d3.csv("datasetprova.csv")
 
-const height = 15240;
+const height = 15300;
 const marginLeft = 200;
 const marginRight = 50;
 const marginTop = 150;
 const marginBottom = 50;
-const marginBottomExtended = 140; // Per aumentare lo scroll in fondo
+const marginBottomExtended = 200; // Per aumentare lo scroll in fondo
 const width = window.innerWidth - marginLeft;
 
 // Creazione di un elemento SVG
@@ -99,7 +99,7 @@ d3.select("body")
     .style("height", (d, i, nodes) => i < nodes.length - 1 ? (sScale(heightData[i]) - 150) + "px" : sScale(heightData[i]) + "px")
     .style("width", (width - marginLeft - marginRight) + "px")
     .style("position", "absolute")
-    .style("top", d => (sScale(d["START"]) + marginTop/1.13) + "px")  // Regola il valore top
+    .style("top", d => (sScale(d["START"]) + marginTop*2.035) + "px")  // Regola il valore top
     .style("left", marginLeft + "px")
     .style("background-color", (d, i) => colors[i]);
 
@@ -112,7 +112,7 @@ d3.select("body")
     .style("height", (d, i, nodes) => i < nodes.length - 1 ? (sScale(heightData[i]) - 150) + "px" : sScale(heightData[i]) + "px")
     .style("width", (width - marginLeft - marginRight) + "px")
     .style("position", "absolute")
-    .style("top", d => (sScale(d["START"]) + marginTop/1.13) + "px")  // Regola il valore top
+    .style("top", d => (sScale(d["START"]) + marginTop*2.03) + "px")  // Regola il valore top
     .style("left", marginLeft + "px")
     .style("background-color", "none");
 
@@ -144,18 +144,29 @@ const lineData = datasetprova.map((d, i) => ({
 }));
 
   
-svg.selectAll("line" + personaggio)
-    .data(lineData.filter(d => d.isPresent))
-    .enter()
-    .append("line")
-    .attr("class", "line")
-    .attr("x1", xScale(personaggio) + xScale.bandwidth() / 2)
-    .attr("x2", xScale(personaggio) + xScale.bandwidth() / 2)
-    .attr("y1", d => sScale(d.start))
-    .attr("y2", d => Math.min(sScale(d.nextStart), yScale.range()[1])) // Per farlo finire quando finisce l'asse y
-    .attr("stroke", colorMap[personaggio])
-    .attr("stroke-width", 4)
-    .style("z-index", 1)
+svg.selectAll(".line" + personaggio)
+  .data(lineData.filter(d => d.isPresent))
+  .enter()
+  .append("line")
+  .attr("class", "line" + personaggio)
+  .attr("x1", xScale(personaggio) + xScale.bandwidth() / 2)
+  .attr("x2", xScale(personaggio) + xScale.bandwidth() / 2)
+  .attr("y1", d => sScale(d.start))
+  .attr("y2", d => Math.min(sScale(d.nextStart), yScale.range()[1]))
+  .attr("stroke", colorMap[personaggio])
+  .attr("stroke-width", 4)
+  .style("z-index", 1)
+  .style("mask", "url(#halfMask)")
+  .on("end", function () {
+    const line = d3.select(this);
+    const length = Math.sqrt(
+      Math.pow(line.attr("x2") - line.attr("x1"), 2) +
+      Math.pow(line.attr("y2") - line.attr("y1"), 2)
+    );
+
+    line.attr("stroke-dasharray", length + " " + length)
+      .attr("stroke-dashoffset", length);
+  });
 });
 
 // Return del nodo SVG
@@ -224,7 +235,7 @@ window.addEventListener("scroll", function () {
   const scrollY = window.scrollY;
 
   // Verifica se lo scorrimento è compreso tra START = 0 e START = 119
-  if (scrollY >= yScale(0)*0.95 && scrollY <= yScale(120)) {
+  if (scrollY >= yScale(0)*2 && scrollY <= yScale(120)) {
     // Calcola la posizione desiderata dell'icona in base allo scorrimento
     const desiredTop = sScale.invert(scrollY) + marginTop;
 
@@ -263,8 +274,8 @@ window.addEventListener("scroll", function () {
 
   const scrollY = window.scrollY;
 
-  if ((scrollY >= sScale(9)*0.95 && scrollY <= sScale(15)*0.98) ||
-      (scrollY >= sScale(102)*0.99 && scrollY <= sScale(106)*0.99)) {
+  if ((scrollY >= sScale(9)*1.1 && scrollY <= sScale(15)*1.05) ||
+      (scrollY >= sScale(102)*1.001 && scrollY <= sScale(106)*1.003)) {
     
     const desiredTop = sScale.invert(scrollY) + marginTop;
    
@@ -300,10 +311,10 @@ window.addEventListener("scroll", function () {
 
   const scrollY = window.scrollY;
 
-  if ((scrollY >= sScale(46)*0.985 && scrollY <= sScale(66)*0.985) ||
-      (scrollY >= sScale(67)*0.985 && scrollY <= sScale(68)*0.985) ||
-      (scrollY >= sScale(73)*0.985 && scrollY <= sScale(75)*0.985) ||
-      (scrollY >= sScale(101)*0.99 && scrollY <= sScale(106)*0.99)) {
+  if ((scrollY >= sScale(46)*1.01 && scrollY <= sScale(66)*1.01) ||
+      (scrollY >= sScale(67)*1.005 && scrollY <= sScale(68)*1.005) ||
+      (scrollY >= sScale(73)*1.005 && scrollY <= sScale(75)*1.003) ||
+      (scrollY >= sScale(101) && scrollY <= sScale(106))) {
     
     const desiredTop = sScale.invert(scrollY) + marginTop;
    
@@ -339,9 +350,9 @@ window.addEventListener("scroll", function () {
 
   const scrollY = window.scrollY;
 
-  if ((scrollY >= sScale(28)*0.98 && scrollY <= sScale(40)*0.985) ||
-      (scrollY >= sScale(96)*0.99 && scrollY <= sScale(97)*0.99) ||
-      (scrollY >= sScale(102)*0.99 && scrollY <= sScale(106)*0.99)) {
+  if ((scrollY >= sScale(28)*1.03 && scrollY <= sScale(40)*1.02) ||
+      (scrollY >= sScale(96)*1.005 && scrollY <= sScale(97)*1.005) ||
+      (scrollY >= sScale(102)*1.001 && scrollY <= sScale(106)*1.003)) {
     
     const desiredTop = sScale.invert(scrollY) + marginTop;
    
@@ -377,8 +388,8 @@ window.addEventListener("scroll", function () {
 
   const scrollY = window.scrollY;
 
-  if ((scrollY >= sScale(69)*0.985 && scrollY <= sScale(73)*0.985) ||
-      (scrollY >= sScale(102)*0.99 && scrollY <= sScale(106)*0.99)) {
+  if ((scrollY >= sScale(69)*1.008 && scrollY <= sScale(73)*1.005) ||
+      (scrollY >= sScale(102)*1.001 && scrollY <= sScale(106)*1.003)) {
     
     const desiredTop = sScale.invert(scrollY) + marginTop;
    
