@@ -4,8 +4,8 @@ import * as d3 from "https://cdn.jsdelivr.net/npm/d3@7/+esm";
 const datasetprova = await d3.csv("datasetprova.csv")
 
 const height = 15300;
-const marginLeft = 200;
-const marginRight = 50;
+const marginLeft = 50;
+const marginRight = 10;
 const marginTop = 150;
 const marginBottom = 50;
 const marginBottomExtended = 200; // Per aumentare lo scroll in fondo
@@ -77,8 +77,8 @@ svg.append("g")
 .selectAll("text")
 .attr("text-anchor", "start")
 .attr("class", "axis-label")
-.attr("dx", "10 em") // Regola la posizione orizzontale
-.attr("dy", "0 em") // Regola la posizione verticale
+.attr("dx", "10") // Regola la posizione orizzontale
+.attr("dy", "0") // Regola la posizione verticale
 .attr("transform", "rotate(-90), translate(0,3)")
 .text(d => d.replace(/_/g, ' ')) // Per togliere l'underscore
 
@@ -99,7 +99,7 @@ d3.select("body")
     .style("height", (d, i, nodes) => i < nodes.length - 1 ? (sScale(heightData[i]) - 150) + "px" : sScale(heightData[i]) + "px")
     .style("width", (width - marginLeft - marginRight) + "px")
     .style("position", "absolute")
-    .style("top", d => (sScale(d["START"]) + marginTop*2.035) + "px")  // Regola il valore top
+    .style("top", d => (sScale(d["START"]) + marginTop*2.03) + "px")  // Regola il valore top
     .style("left", marginLeft + "px")
     .style("background-color", (d, i) => colors[i]);
 
@@ -122,16 +122,16 @@ d3.select("body")
 // Mappatura dei colori per personaggio
 const colorMap = {
     STREGA: "#B792F8",
-    AMOS_CALLOWAY: "purple",
+    AMOS_CALLOWAY: "#939393",
     JENNY: "#D77600",
-    DON_PRICE: "cornflowerblue",
+    DON_PRICE: "#b3001a",
     SANDRA: "#F8E436",
     EDWARD: "#406C25",
-    KARL: "brown",
-    NORTHER_WINSLOW: "darkgreen",
+    KARL: "#4F3E27",
+    NORTHER_WINSLOW: "#e1bc77",
     JING_E_PING: "#9b223b",
-    WILL: "orangered",
-    JOSEPHINE: "magenta"
+    WILL: "#171c61",
+    JOSEPHINE: "#e1c2c1"
 };
 
 // Aggiunta delle linee verticali per indicare la presenza di un personaggio
@@ -156,17 +156,6 @@ svg.selectAll(".line" + personaggio)
   .attr("stroke", colorMap[personaggio])
   .attr("stroke-width", 4)
   .style("z-index", 1)
-  .style("mask", "url(#halfMask)")
-  .on("end", function () {
-    const line = d3.select(this);
-    const length = Math.sqrt(
-      Math.pow(line.attr("x2") - line.attr("x1"), 2) +
-      Math.pow(line.attr("y2") - line.attr("y1"), 2)
-    );
-
-    line.attr("stroke-dasharray", length + " " + length)
-      .attr("stroke-dashoffset", length);
-  });
 });
 
 // Return del nodo SVG
@@ -175,41 +164,62 @@ document.body.appendChild(svg.node());
 
 // Scrollama
 var scrolly = document.querySelector("#scrolly");
-	var article = scrolly.querySelector("article");
-	var step = article.querySelectorAll(".luogo-copia");
+var article = scrolly.querySelector("article");
+var step = article.querySelectorAll(".luogo-copia");
 
-	// initialize the scrollama
-	var scroller = scrollama();
+// initialize the scrollama
+var scroller = scrollama();
 
-	// scrollama event handlers
-	function handleStepEnter(response) {
-		// response = { element, direction, index }
-		console.log(response);
-		// add to color to current step
-		response.element.classList.add("is-active");
-	}
+var activeElements = [];
 
-	function handleStepExit(response) {
-		// response = { element, direction, index }
-		console.log(response);
-		// remove color from current step
-		response.element.classList.remove("is-active");
-	}
+function handleStepEnter(response) {
+    response.element.classList.add("is-active");
+    updateHtmlBackgroundColor(response.index);
+    activeElements.push(response.element);
+}
 
-	function init() {
-		scroller
-			.setup({
-				step: "#scrolly article .luogo-copia", //Per far sì che l'ultima immagine non sia soggetta a Scrollama
-				debug: false,
-				offset: 0.4
-			})
-			.onStepEnter(handleStepEnter)
-			.onStepExit(handleStepExit);
+function handleStepExit(response) {
+    response.element.classList.remove("is-active");
+    const index = activeElements.indexOf(response.element);
+    if (index > -1) {
+        activeElements.splice(index, 1);
+    }
+    // Se non ci sono più elementi attivi, imposta lo sfondo su #1d1d1d
+    if (activeElements.length === 0) {
+        document.documentElement.style.backgroundColor = "#1d1d1d";
+      // Se non ci sono più elementi attivi
+    if (activeElements.length === 0) {
+      // Se si esce dall'ultimo step verso il basso, imposta lo sfondo su #1d1d1d
+      if (response.index === step.length - 1 && response.direction === 'down') {
+          document.documentElement.style.backgroundColor = "#1d1d1d";
+      }}
+    }
+}
 
-	}
+// Funzione per aggiornare il colore di sfondo dell'elemento HTML
+function updateHtmlBackgroundColor(index) {
+    const luogoElements = document.querySelectorAll(".luogo");
+    if (index < luogoElements.length) {
+        const backgroundColor = getComputedStyle(luogoElements[index]).backgroundColor;
+        document.documentElement.style.backgroundColor = backgroundColor;
+    }
+}
 
-	// kick things off
-	init();
+function init() {
+  scroller
+      .setup({
+          step: "#scrolly article .luogo-copia", // Mantieni questo invariato
+          debug: false,
+          offset: 0.4
+      })
+      .onStepEnter(handleStepEnter)
+      .onStepExit(handleStepExit)
+}
+
+// kick things off
+init();
+
+
 
 
 
@@ -223,7 +233,7 @@ const edward = d3.select("body")
   .style("position", "fixed")
   .style("width", "50px")
   .style("top", marginTop + "px")
-  .style("left", "49.5%")
+  .style("left", "50.8%")
   .style("z-index", 3)
   .style("transform", "translateX(-50%)")
   .style("opacity", 0) // Nascondi l'icona all'inizio
@@ -275,7 +285,7 @@ window.addEventListener("scroll", function () {
   const scrollY = window.scrollY;
 
   if ((scrollY >= sScale(9)*1.1 && scrollY <= sScale(15)*1.05) ||
-      (scrollY >= sScale(102)*1.001 && scrollY <= sScale(106)*1.003)) {
+      (scrollY >= sScale(102)*1.001 && scrollY <= sScale(106)*1.001)) {
     
     const desiredTop = sScale.invert(scrollY) + marginTop;
    
@@ -288,7 +298,6 @@ window.addEventListener("scroll", function () {
     strega.style("opacity", 0);
   }
 });
-
 
 // SANDRA
 const desiredLeftSandra = xScale("SANDRA") + xScale.bandwidth() / 2;
@@ -314,7 +323,7 @@ window.addEventListener("scroll", function () {
   if ((scrollY >= sScale(46)*1.01 && scrollY <= sScale(66)*1.01) ||
       (scrollY >= sScale(67)*1.005 && scrollY <= sScale(68)*1.005) ||
       (scrollY >= sScale(73)*1.005 && scrollY <= sScale(75)*1.003) ||
-      (scrollY >= sScale(101) && scrollY <= sScale(106))) {
+      (scrollY >= sScale(101)*1.001 && scrollY <= sScale(106)*1.001)) {
     
     const desiredTop = sScale.invert(scrollY) + marginTop;
    
@@ -351,8 +360,8 @@ window.addEventListener("scroll", function () {
   const scrollY = window.scrollY;
 
   if ((scrollY >= sScale(28)*1.03 && scrollY <= sScale(40)*1.02) ||
-      (scrollY >= sScale(96)*1.005 && scrollY <= sScale(97)*1.005) ||
-      (scrollY >= sScale(102)*1.001 && scrollY <= sScale(106)*1.003)) {
+      (scrollY >= sScale(96)*1.003 && scrollY <= sScale(97)*1.003) ||
+      (scrollY >= sScale(102)*1.001 && scrollY <= sScale(106)*1.001)) {
     
     const desiredTop = sScale.invert(scrollY) + marginTop;
    
@@ -363,6 +372,44 @@ window.addEventListener("scroll", function () {
     }
   } else {
     jenny.style("opacity", 0);
+  }
+});
+
+// DON PRICE
+const desiredLeftDonPrice = xScale("DON_PRICE") + xScale.bandwidth() / 2;
+
+const donprice = d3.select("body")
+  .append("img")
+  .attr("id", "donprice")
+  .attr("src", "icons/donprice.png")
+  .style("position", "fixed")
+  .style("width", "50px")
+  .style("top", marginTop + "px")
+  .style("left", desiredLeftDonPrice*1.01 + "px")
+  .style("z-index", 3)
+  .style("transform", "translateX(-50%)")
+  .style("opacity", 0) // Nascondi l'icona all'inizio
+  .style("transition", "opacity 0.3s ease-in-out")
+
+
+window.addEventListener("scroll", function () {
+
+  const scrollY = window.scrollY;
+
+  if ((scrollY >= sScale(9)*1.1 && scrollY <= sScale(15)*1.05) ||
+      (scrollY >= sScale(19)*1.03 && scrollY <= sScale(23)*1.03) ||
+      (scrollY >= sScale(60)*1.01 && scrollY <= sScale(66)*1.01) ||
+      (scrollY >= sScale(102)*1.001 && scrollY <= sScale(106)*1.001)) {
+    
+    const desiredTop = sScale.invert(scrollY) + marginTop;
+   
+    donprice.style("top", desiredTop + "px");
+    
+    if (donprice.style("opacity") === "0") {
+      donprice.style("opacity", 1);
+    }
+  } else {
+    donprice.style("opacity", 0);
   }
 });
 
@@ -389,7 +436,7 @@ window.addEventListener("scroll", function () {
   const scrollY = window.scrollY;
 
   if ((scrollY >= sScale(69)*1.008 && scrollY <= sScale(73)*1.005) ||
-      (scrollY >= sScale(102)*1.001 && scrollY <= sScale(106)*1.003)) {
+      (scrollY >= sScale(102)*1.001 && scrollY <= sScale(106)*1.001)) {
     
     const desiredTop = sScale.invert(scrollY) + marginTop;
    
@@ -400,5 +447,186 @@ window.addEventListener("scroll", function () {
     }
   } else {
     jingeping.style("opacity", 0);
+  }
+});
+
+// NORTHER WINSLOW
+const desiredLeftNortherWinslow = xScale("NORTHER_WINSLOW") + xScale.bandwidth() / 2;
+
+const northerwinslow = d3.select("body")
+  .append("img")
+  .attr("id", "northerwinslow")
+  .attr("src", "icons/northerwinslow.png")
+  .style("position", "fixed")
+  .style("width", "50px")
+  .style("top", marginTop + "px")
+  .style("left", desiredLeftNortherWinslow*1.01 + "px")
+  .style("z-index", 3)
+  .style("transform", "translateX(-50%)")
+  .style("opacity", 0) // Nascondi l'icona all'inizio
+  .style("transition", "opacity 0.3s ease-in-out")
+
+
+window.addEventListener("scroll", function () {
+
+  const scrollY = window.scrollY;
+
+  if ((scrollY >= sScale(28)*1.03 && scrollY <= sScale(40)*1.02) ||
+      (scrollY >= sScale(84)*1.005 && scrollY <= sScale(88)*1.003) ||
+      (scrollY >= sScale(102)*1.001 && scrollY <= sScale(106)*1.001)) {
+    
+    const desiredTop = sScale.invert(scrollY) + marginTop;
+   
+    northerwinslow.style("top", desiredTop + "px");
+    
+    if (northerwinslow.style("opacity") === "0") {
+      northerwinslow.style("opacity", 1);
+    }
+  } else {
+    northerwinslow.style("opacity", 0);
+  }
+});
+
+// KARL
+const desiredLeftKarl = xScale("KARL") + xScale.bandwidth() / 2;
+
+const karl = d3.select("body")
+  .append("img")
+  .attr("id", "karl")
+  .attr("src", "icons/karl.png")
+  .style("position", "fixed")
+  .style("width", "50px")
+  .style("top", marginTop + "px")
+  .style("left", desiredLeftKarl*1.01 + "px")
+  .style("z-index", 3)
+  .style("transform", "translateX(-50%)")
+  .style("opacity", 0) // Nascondi l'icona all'inizio
+  .style("transition", "opacity 0.3s ease-in-out")
+
+
+window.addEventListener("scroll", function () {
+
+  const scrollY = window.scrollY;
+
+  if ((scrollY >= sScale(23)*1.03 && scrollY <= sScale(28)*1.03) ||
+      (scrollY >= sScale(46)*1.01 && scrollY <= sScale(60)*1.01) ||
+      (scrollY >= sScale(96)*1.003 && scrollY <= sScale(97)*1.003) ||
+      (scrollY >= sScale(102)*1.001 && scrollY <= sScale(106)*1.001)) {
+    
+    const desiredTop = sScale.invert(scrollY) + marginTop;
+   
+    karl.style("top", desiredTop + "px");
+    
+    if (karl.style("opacity") === "0") {
+      karl.style("opacity", 1);
+    }
+  } else {
+    karl.style("opacity", 0);
+  }
+});
+
+// AMOS CALLOWAY
+const desiredLeftAmosCalloway = xScale("AMOS_CALLOWAY") + xScale.bandwidth() / 2;
+
+const amoscalloway = d3.select("body")
+  .append("img")
+  .attr("id", "amoscalloway")
+  .attr("src", "icons/amoscalloway.png")
+  .style("position", "fixed")
+  .style("width", "50px")
+  .style("top", marginTop + "px")
+  .style("left", desiredLeftAmosCalloway*1.01 + "px")
+  .style("z-index", 3)
+  .style("transform", "translateX(-50%)")
+  .style("opacity", 0) // Nascondi l'icona all'inizio
+  .style("transition", "opacity 0.3s ease-in-out")
+
+
+window.addEventListener("scroll", function () {
+
+  const scrollY = window.scrollY;
+
+  if ((scrollY >= sScale(46)*1.01 && scrollY <= sScale(60)*1.01) ||
+      (scrollY >= sScale(102)*1.001 && scrollY <= sScale(106)*1.001)) {
+    
+    const desiredTop = sScale.invert(scrollY) + marginTop;
+   
+    amoscalloway.style("top", desiredTop + "px");
+    
+    if (amoscalloway.style("opacity") === "0") {
+      amoscalloway.style("opacity", 1);
+    }
+  } else {
+    amoscalloway.style("opacity", 0);
+  }
+});
+
+// JOSEPHINE
+const desiredLeftJosephine = xScale("JOSEPHINE") + xScale.bandwidth() / 2;
+
+const josephine = d3.select("body")
+  .append("img")
+  .attr("id", "josephine")
+  .attr("src", "icons/josephine.png")
+  .style("position", "fixed")
+  .style("width", "50px")
+  .style("top", marginTop + "px")
+  .style("left", desiredLeftJosephine*1.01 + "px")
+  .style("z-index", 3)
+  .style("transform", "translateX(-50%)")
+  .style("opacity", 0) // Nascondi l'icona all'inizio
+  .style("transition", "opacity 0.3s ease-in-out")
+
+
+window.addEventListener("scroll", function () {
+
+  const scrollY = window.scrollY;
+
+  if ((scrollY >= sScale(101)*1.001 && scrollY <= sScale(106)*1.001)) {
+    
+    const desiredTop = sScale.invert(scrollY) + marginTop;
+   
+    josephine.style("top", desiredTop + "px");
+    
+    if (josephine.style("opacity") === "0") {
+      josephine.style("opacity", 1);
+    }
+  } else {
+    josephine.style("opacity", 0);
+  }
+});
+
+// WILL
+const desiredLeftWill = xScale("WILL") + xScale.bandwidth() / 2;
+
+const will = d3.select("body")
+  .append("img")
+  .attr("id", "will")
+  .attr("src", "icons/will.png")
+  .style("position", "fixed")
+  .style("width", "50px")
+  .style("top", marginTop + "px")
+  .style("left", desiredLeftWill*1.01 + "px")
+  .style("z-index", 3)
+  .style("transform", "translateX(-50%)")
+  .style("opacity", 0) // Nascondi l'icona all'inizio
+  .style("transition", "opacity 0.3s ease-in-out")
+
+
+window.addEventListener("scroll", function () {
+
+  const scrollY = window.scrollY;
+
+  if ((scrollY >= sScale(101)*1.001 && scrollY <= sScale(106)*1.001)) {
+    
+    const desiredTop = sScale.invert(scrollY) + marginTop;
+   
+    will.style("top", desiredTop + "px");
+    
+    if (will.style("opacity") === "0") {
+      will.style("opacity", 1);
+    }
+  } else {
+    will.style("opacity", 0);
   }
 });

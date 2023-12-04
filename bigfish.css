@@ -10,7 +10,8 @@
 } */
 
 html {
-    background-color: rgb(29, 29, 29);
+    background-color: #1d1d1d;
+    transition: all .4s ease-in-out;
 }
 
 h1 {
@@ -65,16 +66,19 @@ svg {
     justify-content: center;
     align-items: center;
     transition: all .5s ease-in-out;
+    filter: grayscale(100%);
+    backdrop-filter: grayscale(100%);
 }
 
 #reality1, #reality2, #reality3, #reality4, #reality5, #reality6, #reality7, #reality8 {
     z-index: 4;
     backdrop-filter: blur(6px);
-    -webkit-backdrop-filter: blur(6px); 
+    -webkit-backdrop-filter: blur(6px);
+    background-color: rgba(0, 0, 0, 0.0);
 }
 
 .illustrazioni {
-    width: 40%;
+    width: 30%;
     opacity: 0.3;
     transition: all .5s ease-in-out
 }
@@ -83,6 +87,11 @@ svg {
     height: 65%;
     opacity: 0.3;
     transition: all .5s ease-in-out
+}
+
+.luogo-copia.is-active {
+    filter: none;
+    backdrop-filter: none;
 }
 
 .luogo-copia.is-active .illustrazioni {
