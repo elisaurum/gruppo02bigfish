@@ -79,7 +79,7 @@ svg.append("g")
 .attr("class", "axis-label")
 .attr("dx", "10") // Regola la posizione orizzontale
 .attr("dy", "0") // Regola la posizione verticale
-.attr("transform", "rotate(-90), translate(0,3)")
+.attr("transform", "rotate(-45), translate(10,-50)")
 .text(d => d.replace(/_/g, ' ')) // Per togliere l'underscore
 
 
@@ -198,10 +198,10 @@ function handleStepExit(response) {
 
 // Funzione per aggiornare il colore di sfondo dell'elemento HTML
 function updateHtmlBackgroundColor(index) {
-    const luogoElements = document.querySelectorAll(".luogo");
-    if (index < luogoElements.length) {
-        const backgroundColor = getComputedStyle(luogoElements[index]).backgroundColor;
-        document.documentElement.style.backgroundColor = backgroundColor;
+  const luogoElements = document.querySelectorAll(".luogo");
+   if (index < luogoElements.length) {
+       const backgroundColor = getComputedStyle(luogoElements[index]).backgroundColor;
+       document.documentElement.style.backgroundColor = backgroundColor;
     }
 }
 
@@ -265,7 +265,6 @@ window.addEventListener("scroll", function () {
 
 // STREGA
 const desiredLeftStrega = xScale("STREGA") + xScale.bandwidth() / 2;
-
 const strega = d3.select("body")
   .append("img")
   .attr("id", "strega")
@@ -301,7 +300,6 @@ window.addEventListener("scroll", function () {
 
 // SANDRA
 const desiredLeftSandra = xScale("SANDRA") + xScale.bandwidth() / 2;
-
 const sandra = d3.select("body")
   .append("img")
   .attr("id", "sandra")
@@ -340,7 +338,6 @@ window.addEventListener("scroll", function () {
 
 // JENNY
 const desiredLeftJenny = xScale("JENNY") + xScale.bandwidth() / 2;
-
 const jenny = d3.select("body")
   .append("img")
   .attr("id", "jenny")
@@ -377,7 +374,6 @@ window.addEventListener("scroll", function () {
 
 // DON PRICE
 const desiredLeftDonPrice = xScale("DON_PRICE") + xScale.bandwidth() / 2;
-
 const donprice = d3.select("body")
   .append("img")
   .attr("id", "donprice")
@@ -628,5 +624,21 @@ window.addEventListener("scroll", function () {
     }
   } else {
     will.style("opacity", 0);
+  }
+});
+
+// Contenitore delle icone in cima
+const iconcontainer = d3.select(".icontop-container")
+window.addEventListener("scroll", function () {
+
+  const scrollY = window.scrollY;
+
+  if (scrollY < yScale(0)*2) {
+    
+    if (iconcontainer.style("opacity") === "0") {
+      iconcontainer.style("opacity", 1);
+    }
+  } else {
+    iconcontainer.style("opacity", 0);
   }
 });
