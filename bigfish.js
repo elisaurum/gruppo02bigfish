@@ -1,5 +1,6 @@
 // Importa la libreria D3
-import * as d3 from "https://cdn.jsdelivr.net/npm/d3@7/+esm";
+import * as d3 from "https://cdn.jsdelivr.net/npm/d3@7/+esm"
+
 
 const datasetprova = await d3.csv("datasetprova.csv")
 
@@ -116,7 +117,6 @@ d3.select("body")
     .style("left", marginLeft + "px")
     .style("background-color", "none");
 
-
     
 
 // Mappatura dei colori per personaggio
@@ -158,6 +158,28 @@ svg.selectAll(".line" + personaggio)
   .style("z-index", 1)
 });
 
+
+// Array di valori di "START" per i tick desiderati
+const tickValues = [7, 9, 15, 19, 41, 46, 66, 67, 75, 82, 88, 92, 97, 101, 106, 119];
+
+// Filtra i dati solo per i tick desiderati
+const tickData = datasetprova.filter(d => tickValues.includes(+d["START"]));
+
+// Aggiungi le linee bianche sfumate solo nei tick desiderati
+svg.selectAll(".cloud")
+  .data(tickData)
+  .enter()
+  .append("line")
+  .attr("class", "line")
+  .attr("x1", marginLeft)
+  .attr("x2", width - marginRight)
+  .attr("y1", d => sScale(d["START"]))
+  .attr("y2", d => sScale(d["START"]))
+  .style("stroke", "grey")
+  .style("stroke-width", 3)
+
+
+
 // Return del nodo SVG
 document.body.appendChild(svg.node());
 
@@ -170,55 +192,68 @@ var step = article.querySelectorAll(".luogo-copia");
 // initialize the scrollama
 var scroller = scrollama();
 
-var activeElements = [];
+var activeIndex = null;
 
 function handleStepEnter(response) {
     response.element.classList.add("is-active");
-    updateHtmlBackgroundColor(response.index);
-    activeElements.push(response.element);
+
+    const currentIndex = response.index;
+
+    // Imposta l'opacità degli elementi .luogo a 1 solo per l'elemento corrente
+    updateLuogoOpacity(currentIndex, 1);
+
+    updateHtmlBackgroundColor(currentIndex);
+
+    activeIndex = currentIndex;
 }
 
 function handleStepExit(response) {
     response.element.classList.remove("is-active");
-    const index = activeElements.indexOf(response.element);
-    if (index > -1) {
-        activeElements.splice(index, 1);
+
+    // Ripristina l'opacità degli elementi .luogo a 0 quando si esce dallo step
+    updateLuogoOpacity(activeIndex, 0);
+
+    if (activeIndex === response.index) {
+        activeIndex = null;
     }
-    // Se non ci sono più elementi attivi, imposta lo sfondo su #1d1d1d
-    if (activeElements.length === 0) {
-        document.documentElement.style.backgroundColor = "#1d1d1d";
-      // Se non ci sono più elementi attivi
-    if (activeElements.length === 0) {
-      // Se si esce dall'ultimo step verso il basso, imposta lo sfondo su #1d1d1d
-      if (response.index === step.length - 1 && response.direction === 'down') {
-          document.documentElement.style.backgroundColor = "#1d1d1d";
-      }}
+
+    if (activeIndex === null) {
+        if (response.index === step.length - 1 && response.direction === 'down') {
+            document.documentElement.style.backgroundColor = "#1d1d1d";
+        }
     }
 }
 
-// Funzione per aggiornare il colore di sfondo dell'elemento HTML
 function updateHtmlBackgroundColor(index) {
   const luogoElements = document.querySelectorAll(".luogo");
-   if (index < luogoElements.length) {
-       const backgroundColor = getComputedStyle(luogoElements[index]).backgroundColor;
-       document.documentElement.style.backgroundColor = backgroundColor;
-    }
+  if (index < luogoElements.length) {
+      const currentLuogo = luogoElements[index];
+      const backgroundColor = currentLuogo.classList.contains("reality") ? "#1d1d1d" : getComputedStyle(currentLuogo).backgroundColor;
+      document.documentElement.style.backgroundColor = backgroundColor;
+  }
+}
+
+// Funzione per impostare l'opacità degli elementi .luogo
+function updateLuogoOpacity(currentIndex, opacity) {
+    const luogoElements = document.querySelectorAll(".luogo");
+    luogoElements.forEach((element, index) => {
+        element.style.opacity = (index === currentIndex) ? "1" : "0";
+    });
 }
 
 function init() {
-  scroller
-      .setup({
-          step: "#scrolly article .luogo-copia", // Mantieni questo invariato
-          debug: false,
-          offset: 0.4
-      })
-      .onStepEnter(handleStepEnter)
-      .onStepExit(handleStepExit)
+    scroller
+        .setup({
+            step: "#scrolly article .luogo-copia",
+            debug: false,
+            offset: 0.4
+        })
+        .onStepEnter(handleStepEnter)
+        .onStepExit(handleStepExit);
 }
 
 // kick things off
 init();
-
 
 
 

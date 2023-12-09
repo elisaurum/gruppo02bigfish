@@ -55,6 +55,7 @@ svg {
     display: flex; /* Aggiunto display flex per abilitare le proprietà flex */
     justify-content: center; /* Centra orizzontalmente all'interno di .luogo */
     align-items: flex-start;
+    opacity: 100%
 }
 
 .luogo-copia {
@@ -74,6 +75,7 @@ svg {
     backdrop-filter: blur(6px);
     -webkit-backdrop-filter: blur(6px);
     background-color: rgba(0, 0, 0, 0.0);
+    filter: none;
 }
 
 .illustrazioni {
