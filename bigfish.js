@@ -7,7 +7,7 @@ const datasetprova = await d3.csv("datasetprova.csv")
 const height = 15300;
 const marginLeft = 50;
 const marginRight = 10;
-const marginTop = 150;
+const marginTop = 154;
 const marginBottom = 50;
 const marginBottomExtended = 200; // Per aumentare lo scroll in fondo
 const width = window.innerWidth - marginLeft;
@@ -77,11 +77,7 @@ svg.append("g")
 .call((g) => g.select (".domain").remove())
 .selectAll("text")
 .attr("text-anchor", "start")
-.attr("class", "axis-label")
-.attr("dx", "10") // Regola la posizione orizzontale
-.attr("dy", "0") // Regola la posizione verticale
-.attr("transform", "rotate(-45), translate(10,-50)")
-.text(d => d.replace(/_/g, ' ')) // Per togliere l'underscore
+.attr("display", "none")
 
 
 
@@ -100,7 +96,7 @@ d3.select("body")
     .style("height", (d, i, nodes) => i < nodes.length - 1 ? (sScale(heightData[i]) - 150) + "px" : sScale(heightData[i]) + "px")
     .style("width", (width - marginLeft - marginRight) + "px")
     .style("position", "absolute")
-    .style("top", d => (sScale(d["START"]) + marginTop*2.03) + "px")  // Regola il valore top
+    .style("top", d => (sScale(d["START"]) + marginTop*17.25) + "px")  // Regola il valore top
     .style("left", marginLeft + "px")
     .style("background-color", (d, i) => colors[i]);
 
@@ -113,7 +109,7 @@ d3.select("body")
     .style("height", (d, i, nodes) => i < nodes.length - 1 ? (sScale(heightData[i]) - 150) + "px" : sScale(heightData[i]) + "px")
     .style("width", (width - marginLeft - marginRight) + "px")
     .style("position", "absolute")
-    .style("top", d => (sScale(d["START"]) + marginTop*2.03) + "px")  // Regola il valore top
+    .style("top", d => (sScale(d["START"]) + marginTop*17.25) + "px")  // Regola il valore top
     .style("left", marginLeft + "px")
     .style("background-color", "none");
 
@@ -135,28 +131,28 @@ const colorMap = {
 };
 
 // Aggiunta delle linee verticali per indicare la presenza di un personaggio
-datasetprova.columns.slice(3).forEach((personaggio) => {
-const isPresent = datasetprova.map(d => d[personaggio] === "P");
-const lineData = datasetprova.map((d, i) => ({
-    isPresent: isPresent[i],
-    start: d["START"],
-    nextStart: i < datasetprova.length - 1 ? datasetprova[i + 1]["START"] : height
-}));
+//datasetprova.columns.slice(3).forEach((personaggio) => {
+//const isPresent = datasetprova.map(d => d[personaggio] === "P");
+//const lineData = datasetprova.map((d, i) => ({
+//    isPresent: isPresent[i],
+//    start: d["START"],
+//    nextStart: i < datasetprova.length - 1 ? datasetprova[i + 1]["START"] : height
+//}));
 
   
-svg.selectAll(".line" + personaggio)
-  .data(lineData.filter(d => d.isPresent))
-  .enter()
-  .append("line")
-  .attr("class", "line" + personaggio)
-  .attr("x1", xScale(personaggio) + xScale.bandwidth() / 2)
-  .attr("x2", xScale(personaggio) + xScale.bandwidth() / 2)
-  .attr("y1", d => sScale(d.start))
-  .attr("y2", d => Math.min(sScale(d.nextStart), yScale.range()[1]))
-  .attr("stroke", colorMap[personaggio])
-  .attr("stroke-width", 4)
-  .style("z-index", 1)
-});
+//svg.selectAll(".line" + personaggio)
+//  .data(lineData.filter(d => d.isPresent))
+//  .enter()
+//  .append("line")
+//  .attr("class", "line" + personaggio)
+//  .attr("x1", xScale(personaggio) + xScale.bandwidth() / 2)
+//  .attr("x2", xScale(personaggio) + xScale.bandwidth() / 2)
+//  .attr("y1", d => sScale(d.start))
+//  .attr("y2", d => Math.min(sScale(d.nextStart), yScale.range()[1]))
+//  .attr("stroke", colorMap[personaggio])
+//  .attr("stroke-width", 4)
+//  .style("z-index", 1)
+//});
 
 
 // Array di valori di "START" per i tick desiderati
@@ -166,23 +162,51 @@ const tickValues = [7, 9, 15, 19, 41, 46, 66, 67, 75, 82, 88, 92, 97, 101, 106, 
 const tickData = datasetprova.filter(d => tickValues.includes(+d["START"]));
 
 // Aggiungi le linee bianche sfumate solo nei tick desiderati
-svg.selectAll(".cloud")
-  .data(tickData)
-  .enter()
-  .append("line")
-  .attr("class", "line")
-  .attr("x1", marginLeft)
-  .attr("x2", width - marginRight)
-  .attr("y1", d => sScale(d["START"]))
-  .attr("y2", d => sScale(d["START"]))
-  .style("stroke", "grey")
-  .style("stroke-width", 3)
+//svg.selectAll(".cloud")
+//  .data(tickData)
+//  .enter()
+//  .append("line")
+//  .attr("class", "line")
+//  .attr("x1", marginLeft)
+//  .attr("x2", width - marginRight)
+//  .attr("y1", d => sScale(d["START"]))
+//  .attr("y2", d => sScale(d["START"]))
+//  .style("stroke", "grey")
+//  .style("stroke-width", 3)
 
 
 
 // Return del nodo SVG
 document.body.appendChild(svg.node());
 
+// Array di testi da visualizzare
+var texts = ["Edward pesca il pesce gatto pi&#249; grande del mondo in un lago, usando come esca la sua fede nuziale, facendosela poi ridare dal pesce stritolandolo.",
+            "",
+            "Una notte Edward e i suoi amici si ritrovano fuori citt&#224; nei pressi della casa di una strega con un occhio di vetro, quando questi si ritrovano davanti la donna, guardano l&#8217;occhio e scoprono il modo in cui moriranno.",
+            "",
+            "Durante una messa, Edward scopre che i suoi muscoli e le sue ossa crescono troppo in fretta, cosa che lo porta a stare per 3 anni a letto legato a macchinari, potendo solo consultare l&#8217;enciclopedia come mezzo di informazione.",
+            "Edward si reca nella caverna dove vive un gigante di nome Karl che minaccia la citt&#224; di Ashton, a quel punto dopo una discussione entrambi decidono di andarsene insieme, verso nuovi orizzonti.",
+            "Dopo essersi divisi, Edward prende un sentiero cupo, arrivando nell'adorabile cittadina di Spectre: qui conosce Norther Winslow, un poeta, e Jenny, una bambina che si innamora di lui. Edward decide di non rimanere a Spectre, diventando il primo a farlo, per poi tornare in futuro, quando sar&#224; giusto farlo.",
+            "Edward si smarrisce all&#8217;interno del bosco, ancor pi&#249; spaventoso di notte, trovandosi in un attimo tra le grinfie di alberi, che per&#242; lo rilasciano. Uscendo dalla foresta, Edward ritrova Karl, e insieme riprendono la strada.",
+            "",
+            "Edward e Karl arrivano al Callow Circus. Durante lo spettacolo, Edward vede una ragazza, della quale si innamora perdutamente a prima vista, ma non riesce a parlarci. Disperato, Edward chiede aiuto a Amos Calloway, il proprietario del circo, che si rivela amico di famiglia di questa ragazza. Amos dunque propone un lavoro non pagato ad Edward, dove la ricompensa &#232; un&#8217;informazione sulla ragazza una volta al mese. Una notte, Edward scopre che Amos &#232; un lupo mannaro: quando si sveglia il giorno dopo, Amos, riconoscente per non avergli fatto del male, gli rivela il nome della ragazza, Sandra.",
+            "Edward arriva al college dove studia Sandra con i suoi fiori preferiti e si dichiara a lei, ma scopre che quest&#8217;ultima &#232; gi&#224; promessa a Don Price, concittadino di Edward. Don Price scopre le intenzioni di Edward e lo picchia, ma ci&#242; si ritorce contro di lui: Sandra, infatti, notando la violenza del fidanzato, lo lascia per stare con Edward.",
+            "",
+            "Edward scopre di dover partire per il servizio di leva militare obbligatoria.",
+            "Edward si getta in una missione molto pericolosa per cercare di ridurre la sua permanenza nell&#8217;esercito e tornare a casa il prima possibile.",
+            "Edward riesce a recuperare il materiale chiesto dall&#8217;esercito durante uno spettacolo di due gemelle siamesi, Jing e Ping, che per&#242; scoprono la missione. Edward spiega loro che &#232; l&#236; per volere dell&#8217;esercito e che vorrebbe solo tornare a casa; le gemelle si commuovono e addirittura partono con lui.",
+            "Sandra apprende la morte di Edward, in quanto l&#8217;esercito lo ha dato per disperso. Dopo 4 mesi, per&#242;, Edward riesce a tornare da Sandra.",
+            "",
+            "Dopo l&#8217;esperienza dell&#8217;esercito, Edward inizia a lavorare come rappresentante di commercio.",
+            "Edward rincontra Norther Winslow nel bel mezzo di una rapina organizzata da quest&#8217;ultimo. Dopo una chiacchierata, Norther decide di partire per Wall Street per cercare la fortuna.",
+            "",
+            "Una sera, tornando a casa, a causa di un temporale Edward finisce per caso a Spectre. Trovandola in fallimento, decide di comprarla per 50 mila dollari. Non chiedeva soldi ai cittadini: voleva solo che la citt&#224; non morisse. Qui Edward ritrova Jenny, ormai cresciuta e non pi&#249; bambina. Si offre di sistemare la sua casa senza nulla in cambio, ma lei rifiuta. Il protagonista decide di sistemarla lo stesso, creando un legame con Jenny.",
+            "Jenny vorrebbe baciare Edward ma lui si rifiuta, dicendo che &#232; innamorato di sua moglie. Jenny d&#224; a Edward l&#8217;atto di vendita della casa.",
+            "",
+            "Edward &#232; in punto di morte e Sandra, il figlio Will e la nuora Josephine lo portano via dall'ospedale.",
+            "Tutti i personaggi delle storie sono riuniti per celebrare l&#8217;ultimo saluto ad Edward.",
+            "",
+            "Edward si trasforma in un pesce gatto e nuota via lontano."];
 
 // Scrollama
 var scrolly = document.querySelector("#scrolly");
@@ -194,23 +218,34 @@ var scroller = scrollama();
 
 var activeIndex = null;
 
+function updateTextContent(index) {
+  const textContainer = document.querySelector("#text-container");
+  if (index < texts.length) {
+      textContainer.innerHTML = texts[index];
+  }
+}
+
+
 function handleStepEnter(response) {
-    response.element.classList.add("is-active");
+  response.element.classList.add("is-active");
 
-    const currentIndex = response.index;
+  const currentIndex = response.index;
 
-    // Imposta l'opacità degli elementi .luogo a 1 solo per l'elemento corrente
-    updateLuogoOpacity(currentIndex, 1);
+  // Imposta l'opacità; degli elementi .luogo a 1 solo per l'elemento corrente
+  updateLuogoOpacity(currentIndex, 1);
 
-    updateHtmlBackgroundColor(currentIndex);
+  updateHtmlBackgroundColor(currentIndex);
 
-    activeIndex = currentIndex;
+  // Aggiorna il contenuto del testo in base all'indice corrente
+  updateTextContent(currentIndex);
+
+  activeIndex = currentIndex;
 }
 
 function handleStepExit(response) {
     response.element.classList.remove("is-active");
 
-    // Ripristina l'opacità degli elementi .luogo a 0 quando si esce dallo step
+    // Ripristina l'opacità; degli elementi .luogo a 0 quando si esce dallo step
     updateLuogoOpacity(activeIndex, 0);
 
     if (activeIndex === response.index) {
@@ -233,13 +268,14 @@ function updateHtmlBackgroundColor(index) {
   }
 }
 
-// Funzione per impostare l'opacità degli elementi .luogo
+// Funzione per impostare l'opacità; degli elementi .luogo
 function updateLuogoOpacity(currentIndex, opacity) {
     const luogoElements = document.querySelectorAll(".luogo");
     luogoElements.forEach((element, index) => {
         element.style.opacity = (index === currentIndex) ? "1" : "0";
     });
 }
+
 
 function init() {
     scroller
@@ -266,7 +302,7 @@ const edward = d3.select("body")
   .attr("id", "edward")
   .attr("src", "icons/edward.png")
   .style("position", "fixed")
-  .style("width", "50px")
+  .style("width", "60px")
   .style("top", marginTop + "px")
   .style("left", "50.8%")
   .style("z-index", 3)
@@ -279,20 +315,20 @@ window.addEventListener("scroll", function () {
   // Ottieni il valore corrente di pageYOffset (scorrimento verticale)
   const scrollY = window.scrollY;
 
-  // Verifica se lo scorrimento è compreso tra START = 0 e START = 119
-  if (scrollY >= yScale(0)*2 && scrollY <= yScale(120)) {
+  // Verifica se lo scorrimento è; compreso tra START = 0 e START = 119
+  if (scrollY >= yScale(0)*17 && scrollY <= yScale(120)*1.16) {
     // Calcola la posizione desiderata dell'icona in base allo scorrimento
     const desiredTop = sScale.invert(scrollY) + marginTop;
 
     // Imposta la posizione dell'icona in base alla posizione calcolata
     edward.style("top", desiredTop + "px");
 
-    // Mostra l'icona se è nascosta
+    // Mostra l'icona se è; nascosta
     if (edward.style("opacity") === "0") {
       edward.style("opacity", 1);
     }
   } else {
-    // Nascondi l'icona se lo scorrimento è al di fuori del range desiderato
+    // Nascondi l'icona se lo scorrimento è; al di fuori del range desiderato
     edward.style("opacity", 0);
   }
 });
@@ -305,7 +341,7 @@ const strega = d3.select("body")
   .attr("id", "strega")
   .attr("src", "icons/strega.png")
   .style("position", "fixed")
-  .style("width", "50px")
+  .style("width", "60px")
   .style("top", marginTop + "px")
   .style("left", desiredLeftStrega*1.01 + "px")
   .style("z-index", 3)
@@ -318,7 +354,7 @@ window.addEventListener("scroll", function () {
 
   const scrollY = window.scrollY;
 
-  if ((scrollY >= sScale(9)*1.1 && scrollY <= sScale(15)*1.05) ||
+  if ((scrollY >= sScale(9)*2.92 && scrollY <= sScale(15)*2.21) ||
       (scrollY >= sScale(102)*1.001 && scrollY <= sScale(106)*1.001)) {
     
     const desiredTop = sScale.invert(scrollY) + marginTop;
@@ -340,7 +376,7 @@ const sandra = d3.select("body")
   .attr("id", "sandra")
   .attr("src", "icons/sandra.png")
   .style("position", "fixed")
-  .style("width", "50px")
+  .style("width", "60px")
   .style("top", marginTop + "px")
   .style("left", desiredLeftSandra*1.01 + "px")
   .style("z-index", 3)
@@ -378,7 +414,7 @@ const jenny = d3.select("body")
   .attr("id", "jenny")
   .attr("src", "icons/jenny.png")
   .style("position", "fixed")
-  .style("width", "50px")
+  .style("width", "60px")
   .style("top", marginTop + "px")
   .style("left", desiredLeftJenny*1.01 + "px")
   .style("z-index", 3)
@@ -414,7 +450,7 @@ const donprice = d3.select("body")
   .attr("id", "donprice")
   .attr("src", "icons/donprice.png")
   .style("position", "fixed")
-  .style("width", "50px")
+  .style("width", "60px")
   .style("top", marginTop + "px")
   .style("left", desiredLeftDonPrice*1.01 + "px")
   .style("z-index", 3)
@@ -427,8 +463,8 @@ window.addEventListener("scroll", function () {
 
   const scrollY = window.scrollY;
 
-  if ((scrollY >= sScale(9)*1.1 && scrollY <= sScale(15)*1.05) ||
-      (scrollY >= sScale(19)*1.03 && scrollY <= sScale(23)*1.03) ||
+  if ((scrollY >= sScale(9)*2.92 && scrollY <= sScale(15)*2.21) ||
+      (scrollY >= sScale(19) && scrollY <= sScale(23)) ||
       (scrollY >= sScale(60)*1.01 && scrollY <= sScale(66)*1.01) ||
       (scrollY >= sScale(102)*1.001 && scrollY <= sScale(106)*1.001)) {
     
@@ -453,7 +489,7 @@ const jingeping = d3.select("body")
   .attr("id", "jingeping")
   .attr("src", "icons/jingeping.png")
   .style("position", "fixed")
-  .style("width", "50px")
+  .style("width", "60px")
   .style("top", marginTop + "px")
   .style("left", desiredLeftJingEPing*1.01 + "px")
   .style("z-index", 3)
@@ -489,7 +525,7 @@ const northerwinslow = d3.select("body")
   .attr("id", "northerwinslow")
   .attr("src", "icons/northerwinslow.png")
   .style("position", "fixed")
-  .style("width", "50px")
+  .style("width", "60px")
   .style("top", marginTop + "px")
   .style("left", desiredLeftNortherWinslow*1.01 + "px")
   .style("z-index", 3)
@@ -526,7 +562,7 @@ const karl = d3.select("body")
   .attr("id", "karl")
   .attr("src", "icons/karl.png")
   .style("position", "fixed")
-  .style("width", "50px")
+  .style("width", "60px")
   .style("top", marginTop + "px")
   .style("left", desiredLeftKarl*1.01 + "px")
   .style("z-index", 3)
@@ -564,7 +600,7 @@ const amoscalloway = d3.select("body")
   .attr("id", "amoscalloway")
   .attr("src", "icons/amoscalloway.png")
   .style("position", "fixed")
-  .style("width", "50px")
+  .style("width", "60px")
   .style("top", marginTop + "px")
   .style("left", desiredLeftAmosCalloway*1.01 + "px")
   .style("z-index", 3)
@@ -600,7 +636,7 @@ const josephine = d3.select("body")
   .attr("id", "josephine")
   .attr("src", "icons/josephine.png")
   .style("position", "fixed")
-  .style("width", "50px")
+  .style("width", "60px")
   .style("top", marginTop + "px")
   .style("left", desiredLeftJosephine*1.01 + "px")
   .style("z-index", 3)
@@ -635,7 +671,7 @@ const will = d3.select("body")
   .attr("id", "will")
   .attr("src", "icons/will.png")
   .style("position", "fixed")
-  .style("width", "50px")
+  .style("width", "60px")
   .style("top", marginTop + "px")
   .style("left", desiredLeftWill*1.01 + "px")
   .style("z-index", 3)

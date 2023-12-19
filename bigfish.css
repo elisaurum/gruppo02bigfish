@@ -11,7 +11,7 @@
 
 html {
     background-color: #1d1d1d;
-    transition: all .4s ease-in-out;
+    transition: all .5s ease-in-out;
 }
 
 h1 {
@@ -23,26 +23,13 @@ h1 {
     color: white
 }
 
-p {
-    font-family: 'Tim Burton', Arial, Helvetica, sans-serif;
-    text-align: center;
-    font-size: 40px;
-    color: white
-}
-
 svg {
-    z-index: 1;
+    z-index: 1
 }
 
 .numbers {
     font-family:'Tim Burton', Times, serif;
     font-size: 15px;
-    color: white
-}
-
-.axis-label {
-    font-family: 'Tim Burton', Arial, Helvetica, sans-serif;
-    font-size: 18px;
     color: white
 }
 
@@ -60,7 +47,7 @@ svg {
 
 .luogo-copia {
     position: absolute;
-    z-index: 1;
+    z-index: 2;
     margin-left: 9px;
     margin-right: 9px;
     display: flex;
@@ -81,12 +68,14 @@ svg {
 .illustrazioni {
     width: 30%;
     opacity: 0.3;
+    padding: 0 0 0 12%;
     transition: all .5s ease-in-out
 }
 
 .smaller-illustrazioni {
     height: 65%;
     opacity: 0.3;
+    padding: 0 0 0 12%;
     transition: all .5s ease-in-out
 }
 
@@ -97,22 +86,28 @@ svg {
 
 .luogo-copia.is-active .illustrazioni {
     transition: all .5s ease-in-out;
-    transform: scale(150%);
+    transform: scale(200%);
     opacity: 1;
-    z-index: 2
+    z-index: 9999;
 }
 
 .luogo-copia.is-active .smaller-illustrazioni {
     transition: all .5s ease-in-out;
-    transform: scale(150%);
+    transform: scale(180%);
+    opacity: 1;
+    z-index: 2
+}
+
+.luogo-copia.is-active #spectre2 {
+    transition: all .5s ease-in-out;
+    transform: scale(165%);
     opacity: 1;
     z-index: 2
 }
 
 .icon {
     position: relative;
-    width: 45px;
-    transform: translateX(-50%);
+    width: 60px;
     margin: 0
 }
 
@@ -126,4 +121,86 @@ svg {
     top: -6%;
     padding: 0 0 0 2%;
     margin: 0 9px
+}
+
+@font-face {
+    font-family: 'Hedvig';
+    src: url('fonts/hedvig_letters_serif.ttf') format('truetype')
+}
+
+body, html {
+    margin: 0;
+    padding: 0
+}
+
+h1 {
+    font-family: 'Tim Burton', Arial, Helvetica, sans-serif;
+    text-align: center;
+    padding: 50px 4px 0px 4px;
+    font-size: 180px;
+    font-weight: 10;
+    color: white
+}
+
+#descrizione {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#freccia {
+    padding: 0 0 70px 0;
+    width: 100px;
+}
+
+.testo-descrizione {
+    font-family: 'Hedvig', Arial, Helvetica, sans-serif;
+    text-align: center;
+    font-size: 20px;
+    color: white;
+    padding: 80px 300px 0 300px
+}
+
+#legenda {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+    padding: 55px 0;
+}
+
+.legenda-riga {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+    padding: 0 0 0 50px
+}
+
+.titolo-legenda {
+    font-family: 'Tim Burton', Arial, Helvetica, sans-serif;
+    font-size: 30px;
+    color: white
+}
+
+.icon-name {
+    font-family: 'Hedvig', Arial, Helvetica, sans-serif;
+    text-align: left;
+    font-size: 24px;
+    color: white;
+}
+
+#text-container {
+    font-size: 18px;
+    color: white;
+    font-family: 'Hedvig', Arial, Helvetica, sans-serif;
+    position: fixed;
+    top: 50%;
+    left: 20%;
+    transform: translate(-50%, -50%);
+    z-index: 9999;
+    width: 20%;
+    text-shadow: #1d1d1d 0 0 7px;
 }

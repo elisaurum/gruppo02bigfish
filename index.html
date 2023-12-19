@@ -7,26 +7,80 @@
     <title>Big Fish</title>
 </head>
 <body>
-    <h1>I luoghi di Big Fish</h1>
     <script src="scrollama.min.js"></script>
     <script type="module" src="bigfish.js">
     </script>
-    <p>Scrolla per scoprire il viaggio dei personaggi<br>attraverso i luoghi del racconto di Edward</p>
-        <div class="luogo">
-            <div class="icontop-container">
-                <img class="icon" src="icons/strega.png">
-                <img class="icon" src="icons/amoscalloway.png">
-                <img class="icon" src="icons/jenny.png">
-                <img class="icon" src="icons/donprice.png">
-                <img class="icon" src="icons/sandra.png">
+    <h1>I luoghi di Big Fish</h1>
+    <div id="descrizione">
+        <img id="freccia" src="images/freccia.png">
+        <p class="testo-descrizione">&#34;Big Fish&#34; &#232; un film del 2003 diretto da Tim Burton, basato sul romanzo omonimo di Daniel Wallace.
+            La storia ruota attorno alla complessa relazione tra un padre, Edward Bloom, e suo figlio, Will.
+            Edward &#232; noto per raccontare storie incredibili e fantasiose sulla sua vita, che spesso sembrano esagerate o addirittura impossibili.
+            Mentre Edward combatte una malattia terminale, Will cerca di riconciliare la realt&#224; con le straordinarie storie del padre,
+            scoprendo il valore della fantasia, dell&#8217;	amore e della comprensione nella loro relazione.
+        </p>
+        <p class="testo-descrizione">
+            La narrazione si divide quindi in due tipi di scene: quelle a cui appartengono i racconti fantastici di Edward e quelle della realt&#224;.
+            In questa rappresentazione verranno trattate solo le scene del racconto, mentre quelle della realt&#224; risulteranno &#34;oscurate&#34;.
+        </p>
+        <p class="testo-descrizione">
+            Gli elementi ripresi in questa rappresentazione sono i luoghi del racconto e i loro colori preponderanti, che colorano lo sfondo, il minutaggio del film,
+            sui quali si basa la dimensione dei rettangoli dei luoghi, e soprattutto i personaggi presenti nel racconto di Edward.
+        </p>
+        <div id="legenda">
+            <p class="titolo-legenda">LEGENDA DEI PERSONAGGI</p>
+            <div class="legenda-riga">
                 <img class="icon" src="icons/edward.png">
+                <p class="icon-name">Edward</p> 
+            </div>
+            <div class="legenda-riga"> 
+                <img class="icon" src="icons/strega.png">
+                <p class="icon-name">Strega</p> 
+            </div>
+            <div class="legenda-riga">
+                <img class="icon" src="icons/amoscalloway.png">
+                <p class="icon-name">Amos<br>Calloway</p>
+            </div>
+            <div class="legenda-riga">
+                <img class="icon" src="icons/jenny.png">
+                <p class="icon-name">Jenny</p>
+            </div>
+            <div class="legenda-riga">
+                <img class="icon" src="icons/donprice.png">
+                <p class="icon-name">Don Price</p>
+            </div>
+            <div class="legenda-riga">
+                <img class="icon" src="icons/sandra.png">
+                <p class="icon-name">Sandra</p>
+            </div>
+            <div class="legenda-riga">
                 <img class="icon" src="icons/karl.png">
+                <p class="icon-name">Karl</p>
+            </div>
+            <div class="legenda-riga">
+                <img class="icon" src="icons/jenny.png">
+                <p class="icon-name">Jenny</p>
+            </div>
+            <div class="legenda-riga">
                 <img class="icon" src="icons/northerwinslow.png">
+                <p class="icon-name">Norther<br>Winslow</p>
+            </div>
+            <div class="legenda-riga">
                 <img class="icon" src="icons/jingeping.png">
+                <p class="icon-name">Jing e Ping</p>
+            </div>
+            <div class="legenda-riga">
                 <img class="icon" src="icons/will.png">
+                <p class="icon-name">Will</p>
+            </div>
+            <div class="legenda-riga">
                 <img class="icon" src="icons/josephine.png">
+                <p class="icon-name">Josephine</p>
             </div>
         </div>
+    </div>
+    
+        <div class="luogo"></div>
         <div class="luogo"></div>
         <div class="luogo"></div>
         <div class="luogo"></div>
@@ -76,7 +130,7 @@
     <div class="luogo-copia" id="ufficio"><img src="images/ufficio.PNG" class="smaller-illustrazioni"></div>
     <div class="luogo-copia" id="banca"><img src="images/banca.png" class="illustrazioni"></div>
     <div class="luogo-copia" id="reality6"></div>
-    <div class="luogo-copia" id="spectre2"><img src="images/spectre2.png" class="illustrazioni"></div>
+    <div class="luogo-copia" id="spectre2"><img id="spectre2" src="images/spectre2.png" class="illustrazioni"></div>
     <div class="luogo-copia" id="casajenny"><img src="images/casajenny.png" class="smaller-illustrazioni"></div>
     <div class="luogo-copia" id="reality7"></div>
     <div class="luogo-copia" id="ospedale2"><img src="images/ospedale2.png" class="smaller-illustrazioni"></div>
@@ -85,6 +139,8 @@
     <div class="luogo-copia" id="lago2"><img src="images/lago2.PNG" class="smaller-illustrazioni"></div>
     </article>
     </section>
+
+    <div id="text-container"></div>
 
 </body>
 </html>
