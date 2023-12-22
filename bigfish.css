@@ -204,3 +204,7 @@ h1 {
     width: 20%;
     text-shadow: #1d1d1d 0 0 7px;
 }
+
+#text-container.fade-out {
+    opacity: 0;
+  }
