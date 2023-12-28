@@ -233,6 +233,8 @@ function updateTextContent(index) {
   }
 }
 
+let lastScrollDirection = null;
+
 function handleStepEnter(response) {
   response.element.classList.add("is-active");
 
@@ -243,6 +245,9 @@ function handleStepEnter(response) {
 
   updateHtmlBackgroundColor(currentIndex);
 
+  // Mostra le immagini corrispondenti allo step corrente
+  showImagesForStep(currentIndex);
+
   // Aggiorna il contenuto del testo in base all'indice corrente
   updateTextContent(currentIndex);
 
@@ -250,6 +255,8 @@ function handleStepEnter(response) {
 
   // Ripristina l'opacità del text-container quando si entra in uno degli step
   document.querySelector("#text-container").style.opacity = 1;
+
+  lastScrollDirection = response.direction;
 }
 
 
@@ -296,6 +303,149 @@ function updateLuogoOpacity(currentIndex, opacity) {
     });
 }
 
+function showImagesForStep(index) {
+  // Imposta la visibilità delle immagini in base allo step corrente
+  const imgEdward = document.querySelector("#img-edward");
+  const imgStrega = document.querySelector("#img-strega");
+  const imgSandra = document.querySelector("#img-sandra");
+  const imgDonPrice = document.querySelector("#img-donprice");
+  const imgJenny = document.querySelector("#img-jenny");
+  const imgAmosCalloway = document.querySelector("#img-amoscalloway");
+  const imgNortherWinslow = document.querySelector("#img-northerwinslow");
+  const imgWill = document.querySelector("#img-will");
+  const imgJosephine = document.querySelector("#img-josephine");
+  const imgKarl = document.querySelector("#img-karl");
+  const imgJingEPing = document.querySelector("#img-jingeping");
+
+  // Nascondi tutte le immagini con opacità 0
+  imgEdward.style.opacity = 0;
+  imgStrega.style.opacity = 0;
+  imgSandra.style.opacity = 0;
+  imgDonPrice.style.opacity = 0;
+  imgJenny.style.opacity = 0;
+  imgAmosCalloway.style.opacity = 0;
+  imgNortherWinslow.style.opacity = 0;
+  imgKarl.style.opacity = 0;
+  imgJosephine.style.opacity = 0;
+  imgWill.style.opacity = 0;
+  imgJingEPing.style.opacity = 0;
+
+  // Mostra le immagini corrispondenti allo step corrente con opacità piena
+  switch (index) {
+    case 0:
+      imgEdward.style.opacity = 1;
+      break;
+    case 1:
+      imgEdward.style.opacity = 1;
+      break;
+    case 2:
+      imgEdward.style.opacity = 1;
+      imgStrega.style.opacity = 1;
+      imgDonPrice.style.opacity = 1;
+      break;
+    case 3:
+      imgEdward.style.opacity = 1;
+      break;
+    case 4:
+      imgEdward.style.opacity = 1;
+      imgDonPrice.style.opacity = 1;
+      break;
+    case 5:
+      imgEdward.style.opacity = 1;
+      imgKarl.style.opacity = 1;
+      break;
+    case 6:
+      imgEdward.style.opacity = 1;
+      imgNortherWinslow.style.opacity = 1;
+      imgJenny.style.opacity = 1
+      break;
+    case 7:
+      imgEdward.style.opacity = 1;
+      break;
+    case 8:
+      imgEdward.style.opacity = 1;
+      break;
+    case 9:
+      imgEdward.style.opacity = 1;
+      imgAmosCalloway.style.opacity = 1;
+      imgKarl.style.opacity = 1;
+      imgSandra.style.opacity = 1;
+      break;
+    case 10:
+      imgEdward.style.opacity = 1;
+      imgDonPrice.style.opacity = 1;
+      imgSandra.style.opacity = 1;
+      break;
+    case 11:
+      imgEdward.style.opacity = 1;
+      break;
+    case 12:
+      imgEdward.style.opacity = 1;
+      imgSandra.style.opacity = 1;
+      break;
+    case 13:
+      imgEdward.style.opacity = 1;
+      break;
+    case 14:
+      imgEdward.style.opacity = 1;
+      imgJingEPing.style.opacity = 1;
+      break;
+    case 15:
+      imgEdward.style.opacity = 1;
+      imgSandra.style.opacity = 1;
+      break;
+    case 16:
+      imgEdward.style.opacity = 1;
+      break;
+    case 17:
+      imgEdward.style.opacity = 1;
+      break;
+    case 18:
+      imgEdward.style.opacity = 1;
+      imgNortherWinslow.style.opacity = 1;
+      break;
+    case 19:
+      imgEdward.style.opacity = 1;
+      break;
+    case 20:
+      imgEdward.style.opacity = 1;
+      break;
+    case 21:
+      imgEdward.style.opacity = 1;
+      imgJenny.style.opacity = 1;
+      imgKarl.style.opacity = 1;
+      break;
+    case 22:
+      imgEdward.style.opacity = 1;
+      break;
+    case 23:
+      imgEdward.style.opacity = 1;
+      imgSandra.style.opacity = 1;
+      imgWill.style.opacity = 1;
+      imgJosephine.style.opacity = 1;
+      break;
+    case 24:
+      imgEdward.style.opacity = 1;
+      imgSandra.style.opacity = 1;
+      imgWill.style.opacity = 1;
+      imgJosephine.style.opacity = 1;
+      imgJenny.style.opacity = 1;
+      imgKarl.style.opacity = 1;
+      imgNortherWinslow.style.opacity = 1;
+      imgJingEPing.style.opacity = 1;
+      imgAmosCalloway.style.opacity = 1;
+      imgStrega.style.opacity = 1;
+      imgDonPrice.style.opacity = 1;
+      break;
+    case 25:
+      imgEdward.style.opacity = 1;
+      break;
+    case 26:
+      imgEdward.style.opacity = 1;
+      break;
+  }
+}
+
 
 function init() {
     scroller
@@ -310,426 +460,3 @@ function init() {
 
 // kick things off
 init();
-
-
-
-
-// SEZIONE ICONE
-
-// EDWARD
-const edward = d3.select("body")
-  .append("img")
-  .attr("id", "edward")
-  .attr("src", "icons/edward.png")
-  .style("position", "fixed")
-  .style("width", "60px")
-  .style("top", marginTop + "px")
-  .style("left", "50.8%")
-  .style("z-index", 3)
-  .style("transform", "translateX(-50%)")
-  .style("opacity", 0) // Nascondi l'icona all'inizio
-  .style("transition", "opacity 0.3s ease-in-out")
-
-// Aggiungi un gestore di eventi di scorrimento alla finestra
-window.addEventListener("scroll", function () {
-  // Ottieni il valore corrente di pageYOffset (scorrimento verticale)
-  const scrollY = window.scrollY;
-
-  // Verifica se lo scorrimento è; compreso tra START = 0 e START = 119
-  if (scrollY >= yScale(0)*17 && scrollY <= yScale(120)*1.16) {
-    // Calcola la posizione desiderata dell'icona in base allo scorrimento
-    const desiredTop = sScale.invert(scrollY) + marginTop;
-
-    // Imposta la posizione dell'icona in base alla posizione calcolata
-    edward.style("top", desiredTop + "px");
-
-    // Mostra l'icona se è; nascosta
-    if (edward.style("opacity") === "0") {
-      edward.style("opacity", 1);
-    }
-  } else {
-    // Nascondi l'icona se lo scorrimento è; al di fuori del range desiderato
-    edward.style("opacity", 0);
-  }
-});
-
-
-// STREGA
-const desiredLeftStrega = xScale("STREGA") + xScale.bandwidth() / 2;
-const strega = d3.select("body")
-  .append("img")
-  .attr("id", "strega")
-  .attr("src", "icons/strega.png")
-  .style("position", "fixed")
-  .style("width", "60px")
-  .style("top", marginTop + "px")
-  .style("left", desiredLeftStrega*1.01 + "px")
-  .style("z-index", 3)
-  .style("transform", "translateX(-50%)")
-  .style("opacity", 0) // Nascondi l'icona all'inizio
-  .style("transition", "opacity 0.3s ease-in-out")
-
-
-window.addEventListener("scroll", function () {
-
-  const scrollY = window.scrollY;
-
-  if ((scrollY >= sScale(9)*2.92 && scrollY <= sScale(15)*2.21) ||
-      (scrollY >= sScale(102)*1.001 && scrollY <= sScale(106)*1.001)) {
-    
-    const desiredTop = sScale.invert(scrollY) + marginTop;
-   
-    strega.style("top", desiredTop + "px");
-    
-    if (strega.style("opacity") === "0") {
-      strega.style("opacity", 1);
-    }
-  } else {
-    strega.style("opacity", 0);
-  }
-});
-
-// SANDRA
-const desiredLeftSandra = xScale("SANDRA") + xScale.bandwidth() / 2;
-const sandra = d3.select("body")
-  .append("img")
-  .attr("id", "sandra")
-  .attr("src", "icons/sandra.png")
-  .style("position", "fixed")
-  .style("width", "60px")
-  .style("top", marginTop + "px")
-  .style("left", desiredLeftSandra*1.01 + "px")
-  .style("z-index", 3)
-  .style("transform", "translateX(-50%)")
-  .style("opacity", 0) // Nascondi l'icona all'inizio
-  .style("transition", "opacity 0.3s ease-in-out")
-
-
-window.addEventListener("scroll", function () {
-
-  const scrollY = window.scrollY;
-
-  if ((scrollY >= sScale(46)*1.01 && scrollY <= sScale(66)*1.01) ||
-      (scrollY >= sScale(67)*1.005 && scrollY <= sScale(68)*1.005) ||
-      (scrollY >= sScale(73)*1.005 && scrollY <= sScale(75)*1.003) ||
-      (scrollY >= sScale(101)*1.001 && scrollY <= sScale(106)*1.001)) {
-    
-    const desiredTop = sScale.invert(scrollY) + marginTop;
-   
-    sandra.style("top", desiredTop + "px");
-    
-    if (sandra.style("opacity") === "0") {
-      sandra.style("opacity", 1);
-    }
-  } else {
-    sandra.style("opacity", 0);
-  }
-});
-
-
-// JENNY
-const desiredLeftJenny = xScale("JENNY") + xScale.bandwidth() / 2;
-const jenny = d3.select("body")
-  .append("img")
-  .attr("id", "jenny")
-  .attr("src", "icons/jenny.png")
-  .style("position", "fixed")
-  .style("width", "60px")
-  .style("top", marginTop + "px")
-  .style("left", desiredLeftJenny*1.01 + "px")
-  .style("z-index", 3)
-  .style("transform", "translateX(-50%)")
-  .style("opacity", 0) // Nascondi l'icona all'inizio
-  .style("transition", "opacity 0.3s ease-in-out")
-
-
-window.addEventListener("scroll", function () {
-
-  const scrollY = window.scrollY;
-
-  if ((scrollY >= sScale(28)*1.03 && scrollY <= sScale(40)*1.02) ||
-      (scrollY >= sScale(96)*1.003 && scrollY <= sScale(97)*1.003) ||
-      (scrollY >= sScale(102)*1.001 && scrollY <= sScale(106)*1.001)) {
-    
-    const desiredTop = sScale.invert(scrollY) + marginTop;
-   
-    jenny.style("top", desiredTop + "px");
-    
-    if (jenny.style("opacity") === "0") {
-      jenny.style("opacity", 1);
-    }
-  } else {
-    jenny.style("opacity", 0);
-  }
-});
-
-// DON PRICE
-const desiredLeftDonPrice = xScale("DON_PRICE") + xScale.bandwidth() / 2;
-const donprice = d3.select("body")
-  .append("img")
-  .attr("id", "donprice")
-  .attr("src", "icons/donprice.png")
-  .style("position", "fixed")
-  .style("width", "60px")
-  .style("top", marginTop + "px")
-  .style("left", desiredLeftDonPrice*1.01 + "px")
-  .style("z-index", 3)
-  .style("transform", "translateX(-50%)")
-  .style("opacity", 0) // Nascondi l'icona all'inizio
-  .style("transition", "opacity 0.3s ease-in-out")
-
-
-window.addEventListener("scroll", function () {
-
-  const scrollY = window.scrollY;
-
-  if ((scrollY >= sScale(9)*2.92 && scrollY <= sScale(15)*2.21) ||
-      (scrollY >= sScale(19) && scrollY <= sScale(23)) ||
-      (scrollY >= sScale(60)*1.01 && scrollY <= sScale(66)*1.01) ||
-      (scrollY >= sScale(102)*1.001 && scrollY <= sScale(106)*1.001)) {
-    
-    const desiredTop = sScale.invert(scrollY) + marginTop;
-   
-    donprice.style("top", desiredTop + "px");
-    
-    if (donprice.style("opacity") === "0") {
-      donprice.style("opacity", 1);
-    }
-  } else {
-    donprice.style("opacity", 0);
-  }
-});
-
-
-// JING E PING
-const desiredLeftJingEPing = xScale("JING_E_PING") + xScale.bandwidth() / 2;
-
-const jingeping = d3.select("body")
-  .append("img")
-  .attr("id", "jingeping")
-  .attr("src", "icons/jingeping.png")
-  .style("position", "fixed")
-  .style("width", "60px")
-  .style("top", marginTop + "px")
-  .style("left", desiredLeftJingEPing*1.01 + "px")
-  .style("z-index", 3)
-  .style("transform", "translateX(-50%)")
-  .style("opacity", 0) // Nascondi l'icona all'inizio
-  .style("transition", "opacity 0.3s ease-in-out")
-
-
-window.addEventListener("scroll", function () {
-
-  const scrollY = window.scrollY;
-
-  if ((scrollY >= sScale(69)*1.008 && scrollY <= sScale(73)*1.005) ||
-      (scrollY >= sScale(102)*1.001 && scrollY <= sScale(106)*1.001)) {
-    
-    const desiredTop = sScale.invert(scrollY) + marginTop;
-   
-    jingeping.style("top", desiredTop + "px");
-    
-    if (jingeping.style("opacity") === "0") {
-      jingeping.style("opacity", 1);
-    }
-  } else {
-    jingeping.style("opacity", 0);
-  }
-});
-
-// NORTHER WINSLOW
-const desiredLeftNortherWinslow = xScale("NORTHER_WINSLOW") + xScale.bandwidth() / 2;
-
-const northerwinslow = d3.select("body")
-  .append("img")
-  .attr("id", "northerwinslow")
-  .attr("src", "icons/northerwinslow.png")
-  .style("position", "fixed")
-  .style("width", "60px")
-  .style("top", marginTop + "px")
-  .style("left", desiredLeftNortherWinslow*1.01 + "px")
-  .style("z-index", 3)
-  .style("transform", "translateX(-50%)")
-  .style("opacity", 0) // Nascondi l'icona all'inizio
-  .style("transition", "opacity 0.3s ease-in-out")
-
-
-window.addEventListener("scroll", function () {
-
-  const scrollY = window.scrollY;
-
-  if ((scrollY >= sScale(28)*1.03 && scrollY <= sScale(40)*1.02) ||
-      (scrollY >= sScale(84)*1.005 && scrollY <= sScale(88)*1.003) ||
-      (scrollY >= sScale(102)*1.001 && scrollY <= sScale(106)*1.001)) {
-    
-    const desiredTop = sScale.invert(scrollY) + marginTop;
-   
-    northerwinslow.style("top", desiredTop + "px");
-    
-    if (northerwinslow.style("opacity") === "0") {
-      northerwinslow.style("opacity", 1);
-    }
-  } else {
-    northerwinslow.style("opacity", 0);
-  }
-});
-
-// KARL
-const desiredLeftKarl = xScale("KARL") + xScale.bandwidth() / 2;
-
-const karl = d3.select("body")
-  .append("img")
-  .attr("id", "karl")
-  .attr("src", "icons/karl.png")
-  .style("position", "fixed")
-  .style("width", "60px")
-  .style("top", marginTop + "px")
-  .style("left", desiredLeftKarl*1.01 + "px")
-  .style("z-index", 3)
-  .style("transform", "translateX(-50%)")
-  .style("opacity", 0) // Nascondi l'icona all'inizio
-  .style("transition", "opacity 0.3s ease-in-out")
-
-
-window.addEventListener("scroll", function () {
-
-  const scrollY = window.scrollY;
-
-  if ((scrollY >= sScale(23)*1.03 && scrollY <= sScale(28)*1.03) ||
-      (scrollY >= sScale(46)*1.01 && scrollY <= sScale(60)*1.01) ||
-      (scrollY >= sScale(96)*1.003 && scrollY <= sScale(97)*1.003) ||
-      (scrollY >= sScale(102)*1.001 && scrollY <= sScale(106)*1.001)) {
-    
-    const desiredTop = sScale.invert(scrollY) + marginTop;
-   
-    karl.style("top", desiredTop + "px");
-    
-    if (karl.style("opacity") === "0") {
-      karl.style("opacity", 1);
-    }
-  } else {
-    karl.style("opacity", 0);
-  }
-});
-
-// AMOS CALLOWAY
-const desiredLeftAmosCalloway = xScale("AMOS_CALLOWAY") + xScale.bandwidth() / 2;
-
-const amoscalloway = d3.select("body")
-  .append("img")
-  .attr("id", "amoscalloway")
-  .attr("src", "icons/amoscalloway.png")
-  .style("position", "fixed")
-  .style("width", "60px")
-  .style("top", marginTop + "px")
-  .style("left", desiredLeftAmosCalloway*1.01 + "px")
-  .style("z-index", 3)
-  .style("transform", "translateX(-50%)")
-  .style("opacity", 0) // Nascondi l'icona all'inizio
-  .style("transition", "opacity 0.3s ease-in-out")
-
-
-window.addEventListener("scroll", function () {
-
-  const scrollY = window.scrollY;
-
-  if ((scrollY >= sScale(46)*1.01 && scrollY <= sScale(60)*1.01) ||
-      (scrollY >= sScale(102)*1.001 && scrollY <= sScale(106)*1.001)) {
-    
-    const desiredTop = sScale.invert(scrollY) + marginTop;
-   
-    amoscalloway.style("top", desiredTop + "px");
-    
-    if (amoscalloway.style("opacity") === "0") {
-      amoscalloway.style("opacity", 1);
-    }
-  } else {
-    amoscalloway.style("opacity", 0);
-  }
-});
-
-// JOSEPHINE
-const desiredLeftJosephine = xScale("JOSEPHINE") + xScale.bandwidth() / 2;
-
-const josephine = d3.select("body")
-  .append("img")
-  .attr("id", "josephine")
-  .attr("src", "icons/josephine.png")
-  .style("position", "fixed")
-  .style("width", "60px")
-  .style("top", marginTop + "px")
-  .style("left", desiredLeftJosephine*1.01 + "px")
-  .style("z-index", 3)
-  .style("transform", "translateX(-50%)")
-  .style("opacity", 0) // Nascondi l'icona all'inizio
-  .style("transition", "opacity 0.3s ease-in-out")
-
-
-window.addEventListener("scroll", function () {
-
-  const scrollY = window.scrollY;
-
-  if ((scrollY >= sScale(101)*1.001 && scrollY <= sScale(106)*1.001)) {
-    
-    const desiredTop = sScale.invert(scrollY) + marginTop;
-   
-    josephine.style("top", desiredTop + "px");
-    
-    if (josephine.style("opacity") === "0") {
-      josephine.style("opacity", 1);
-    }
-  } else {
-    josephine.style("opacity", 0);
-  }
-});
-
-// WILL
-const desiredLeftWill = xScale("WILL") + xScale.bandwidth() / 2;
-
-const will = d3.select("body")
-  .append("img")
-  .attr("id", "will")
-  .attr("src", "icons/will.png")
-  .style("position", "fixed")
-  .style("width", "60px")
-  .style("top", marginTop + "px")
-  .style("left", desiredLeftWill*1.01 + "px")
-  .style("z-index", 3)
-  .style("transform", "translateX(-50%)")
-  .style("opacity", 0) // Nascondi l'icona all'inizio
-  .style("transition", "opacity 0.3s ease-in-out")
-
-
-window.addEventListener("scroll", function () {
-
-  const scrollY = window.scrollY;
-
-  if ((scrollY >= sScale(101)*1.001 && scrollY <= sScale(106)*1.001)) {
-    
-    const desiredTop = sScale.invert(scrollY) + marginTop;
-   
-    will.style("top", desiredTop + "px");
-    
-    if (will.style("opacity") === "0") {
-      will.style("opacity", 1);
-    }
-  } else {
-    will.style("opacity", 0);
-  }
-});
-
-// Contenitore delle icone in cima
-const iconcontainer = d3.select(".icontop-container")
-window.addEventListener("scroll", function () {
-
-  const scrollY = window.scrollY;
-
-  if (scrollY < yScale(0)*2) {
-    
-    if (iconcontainer.style("opacity") === "0") {
-      iconcontainer.style("opacity", 1);
-    }
-  } else {
-    iconcontainer.style("opacity", 0);
-  }
-});
