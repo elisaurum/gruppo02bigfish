@@ -59,8 +59,6 @@ svg {
 
 #reality1, #reality2, #reality3, #reality4, #reality5, #reality6, #reality7, #reality8 {
     z-index: 4;
-    backdrop-filter: blur(6px);
-    -webkit-backdrop-filter: blur(6px);
     background-color: rgba(0, 0, 0, 0.0);
     filter: none;
 }
@@ -73,7 +71,7 @@ svg {
 }
 
 .smaller-illustrazioni {
-    height: 65%;
+    height: 95%;
     opacity: 0.3;
     padding: 0 0 0 12%;
     transition: all .5s ease-in-out
@@ -93,7 +91,7 @@ svg {
 
 .luogo-copia.is-active .smaller-illustrazioni {
     transition: all .5s ease-in-out;
-    transform: scale(180%);
+    transform: scale(200%);
     opacity: 1;
     z-index: 2
 }
@@ -206,7 +204,7 @@ h1 {
     position: fixed;
     justify-content: center;
     top: 50%;
-    left: 60%;
+    left: 62%;
     transform: translate(-50%, -50%);
     z-index: 3;
 }
@@ -215,13 +213,35 @@ h1 {
     position: relative;
     height: 65px;
     margin: 0;
+    filter: drop-shadow(#ffffff29 0 0 7px)
+}
+
+#legend-karl {
+    height: 82px;
+    margin-right: 12px
+}
+
+#legend-will {
+    height: 82px;
+    margin-right: 5px
+}
+
+#legend-josephine {
+    height: 82px;
+}
+
+#legend-winslow {
+    height: 55px;
+}
+
+#legend-calloway {
+    height: 45px
 }
 
 .icon {
     position: absolute;
     height: 65px;
     margin: 0;
-    display: none;
     opacity: 0;
     transition: opacity .3s ease-in-out;
 }
@@ -230,10 +250,37 @@ h1 {
     height: 50px
 }
 
-#img-karl {
+#img-northerwinslow {
+    top: 8px
+}
+
+#img-karl, #img-josephine {
     height: 80px;
+}
+
+#img-sandra, #img-strega {
+    top: -5px
 }
 
 #text-container.fade-out {
     opacity: 0;
+}
+
+.hover-text {
+    position: absolute;
+    display: flex;
+    top: -40px;
+    width: 500px;
+    font-family: 'Hedvig', Arial, Helvetica, sans-serif;
+    text-align: center;
+    margin: 0;
+    font-size: 20px;
+    color: white;
+    text-shadow: #000000 0 0 4px;
+    opacity: 0;
+    transition: opacity .3s ease-in-out;
+}
+
+.hover-text.hover-text-visible {
+  opacity: 1;
 }

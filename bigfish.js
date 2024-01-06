@@ -254,7 +254,7 @@ function handleStepEnter(response) {
   activeIndex = currentIndex;
 
   // Ripristina l'opacità del text-container quando si entra in uno degli step
-  document.querySelector("#text-container").style.display = "block";
+  document.querySelector("#text-container").style.opacity = 1;
 
   lastScrollDirection = response.direction;
 }
@@ -290,145 +290,237 @@ function showImagesForStep(index) {
   const imgJosephine = document.querySelector("#img-josephine");
   const imgKarl = document.querySelector("#img-karl");
   const imgJingEPing = document.querySelector("#img-jingeping");
+  
+  const hoverEdward = document.querySelector("#edward-hover");
+  const hoverStrega = document.querySelector("#strega-hover");
+  const hoverSandra = document.querySelector("#sandra-hover");
+  const hoverDonPrice = document.querySelector("#donprice-hover");
+  const hoverJenny = document.querySelector("#jenny-hover");
+  const hoverAmosCalloway = document.querySelector("#amoscalloway-hover");
+  const hoverNortherWinslow = document.querySelector("#northerwinslow-hover");
+  const hoverWill = document.querySelector("#will-hover");
+  const hoverJosephine = document.querySelector("#josephine-hover");
+  const hoverKarl = document.querySelector("#karl-hover");
+  const hoverJingEPing = document.querySelector("#jingeping-hover");
 
   // Nascondi tutte le immagini con opacità 0
   const allImages = [imgEdward, imgStrega, imgSandra, imgDonPrice, imgJenny, imgAmosCalloway, imgNortherWinslow, imgWill, imgJosephine, imgKarl, imgJingEPing];
   allImages.forEach(img => {
     img.style.opacity = 0;
-    img.style.display = "none"
+    img.style.filter = "drop-shadow(#ffffff78 0 0 7px)"
+  });
+
+  const allHover = [hoverEdward, hoverStrega, hoverSandra, hoverDonPrice, hoverJenny, hoverAmosCalloway, hoverNortherWinslow, hoverWill, hoverJosephine, hoverKarl, hoverJingEPing];
+  allHover.forEach(p => {
+    p.style.left = "-99999px" // Per nascondere i nomi delle icone non presenti
   });
 
   // Mostra le immagini corrispondenti allo step corrente con opacità piena
   switch (index) {
     case 0:
-      imgEdward.style.display = "block";
+      imgEdward.style.opacity = 1;
       break;
     case 1:
-      imgEdward.style.display = "block";
+      imgEdward.style.opacity = 1;
+      imgEdward.style.filter = "blur(4px)";
       break;
     case 2:
-      imgEdward.style.display = "block";
-      imgStrega.style.display = "block";
+      imgEdward.style.opacity = 1;
+      imgStrega.style.opacity = 1;
       imgStrega.style.left = "-100px";
-      imgDonPrice.style.display = "block";
+      hoverStrega.style.left = "-95px";
+      imgDonPrice.style.opacity = 1;
       imgDonPrice.style.left = "40px";
+      hoverDonPrice.style.left = "28px";
       break;
     case 3:
-      imgEdward.style.display = "block";
+      imgEdward.style.opacity = 1;
+      imgEdward.style.filter = "blur(4px)"
       break;
     case 4:
-      imgEdward.style.display = "block";
-      imgDonPrice.style.display = "block";
+      imgEdward.style.opacity = 1;
+      imgDonPrice.style.opacity = 1;
       imgDonPrice.style.left = "40px";
+      hoverDonPrice.style.left = "28px";
       break;
     case 5:
-      imgEdward.style.display = "block";
-      imgKarl.style.display = "block";
+      imgEdward.style.opacity = 1;
+      imgKarl.style.opacity = 1;
       imgKarl.style.left = "-80px";
+      hoverKarl.style.left = "-70px";
       break;
     case 6:
-      imgEdward.style.display = "block";
-      imgNortherWinslow.style.display = "block";
+      imgEdward.style.opacity = 1;
+      imgNortherWinslow.style.opacity = 1;
       imgNortherWinslow.style.left = "-100px";
-      imgJenny.style.display = "block"
+      hoverNortherWinslow.style.left = "-150px";
+      imgJenny.style.opacity = 1
       imgJenny.style.left = "40px";
+      hoverJenny.style.left = "40px";
       break;
     case 7:
-      imgEdward.style.display = "block";
+      imgEdward.style.opacity = 1;
       break;
     case 8:
-      imgEdward.style.display = "block";
+      imgEdward.style.opacity = 1;
+      imgEdward.style.filter = "blur(4px)"
       break;
     case 9:
-      imgEdward.style.display = "block";
-      imgAmosCalloway.style.display = "block";
+      imgEdward.style.opacity = 1;
+      imgAmosCalloway.style.opacity = 1;
       imgAmosCalloway.style.left = "90px";
-      imgKarl.style.display = "block";
+      hoverAmosCalloway.style.left = "60px";
+      imgKarl.style.opacity = 1;
       imgKarl.style.left = "-80px";
-      imgSandra.style.display = "block";
+      hoverKarl.style.left = "-70px";
+      imgSandra.style.opacity = 1;
       imgSandra.style.left = "30px";
+      hoverSandra.style.left = "30px";
       break;
     case 10:
-      imgEdward.style.display = "block";
-      imgDonPrice.style.display = "block";
+      imgEdward.style.opacity = 1;
+      imgDonPrice.style.opacity = 1;
       imgDonPrice.style.left = "-90px";
-      imgSandra.style.display = "block";
+      hoverDonPrice.style.left = "-105px";
+      imgSandra.style.opacity = 1;
       imgSandra.style.left = "30px";
+      hoverSandra.style.left = "30px";
       break;
     case 11:
-      imgEdward.style.display = "block";
+      imgEdward.style.opacity = 1;
+      imgEdward.style.filter = "blur(4px)"
       break;
     case 12:
-      imgEdward.style.display = "block";
-      imgSandra.style.display = "block";
+      imgEdward.style.opacity = 1;
+      imgSandra.style.opacity = 1;
+      imgSandra.style.left = "30px";
+      hoverSandra.style.left = "30px";
       break;
     case 13:
-      imgEdward.style.display = "block";
+      imgEdward.style.opacity = 1;
       break;
     case 14:
-      imgEdward.style.display = "block";
-      imgJingEPing.style.display = "block";
+      imgEdward.style.opacity = 1;
+      imgJingEPing.style.opacity = 1;
+      imgJingEPing.style.left = "-90px";
+      hoverJingEPing.style.left = "-105px";
       break;
     case 15:
-      imgEdward.style.display = "block";
-      imgSandra.style.display = "block";
+      imgEdward.style.opacity = 1;
+      imgSandra.style.opacity = 1;
+      imgSandra.style.left = "30px";
+      hoverSandra.style.left = "30px";
       break;
     case 16:
-      imgEdward.style.display = "block";
+      imgEdward.style.opacity = 1;
+      imgEdward.style.filter = "blur(4px)"
       break;
     case 17:
-      imgEdward.style.display = "block";
+      imgEdward.style.opacity = 1;
       break;
     case 18:
-      imgEdward.style.display = "block";
-      imgNortherWinslow.style.display = "block";
+      imgEdward.style.opacity = 1;
+      imgNortherWinslow.style.opacity = 1;
+      imgNortherWinslow.style.left = "-90px";
+      hoverNortherWinslow.style.left = "-140px";
       break;
     case 19:
-      imgEdward.style.display = "block";
+      imgEdward.style.opacity = 1;
+      imgEdward.style.filter = "blur(4px)"
       break;
     case 20:
-      imgEdward.style.display = "block";
+      imgEdward.style.opacity = 1;
       break;
     case 21:
-      imgEdward.style.display = "block";
-      imgJenny.style.display = "block";
-      imgKarl.style.display = "block";
+      imgEdward.style.opacity = 1;
+      imgJenny.style.opacity = 1;
+      imgJenny.style.left = "40px";
+      hoverJenny.style.left = "40px";
+      imgKarl.style.opacity = 1;
+      imgKarl.style.left = "-80px";
+      hoverKarl.style.left = "-70px";
       break;
     case 22:
-      imgEdward.style.display = "block";
+      imgEdward.style.opacity = 1;
+      imgEdward.style.filter = "blur(4px)"
       break;
     case 23:
-      imgEdward.style.display = "block";
-      imgSandra.style.display = "block";
-      imgWill.style.display = "block";
-      imgJosephine.style.display = "block";
+      imgEdward.style.opacity = 1;
+      imgSandra.style.opacity = 1;
+      imgSandra.style.left = "30px";
+      hoverSandra.style.left = "30px";
+      imgWill.style.opacity = 1;
+      imgWill.style.left = "-75px";
+      hoverWill.style.left = "-70px";
+      imgJosephine.style.opacity = 1;
+      imgJosephine.style.left = "-130px";
+      hoverJosephine.style.left = "-140px";
       break;
     case 24:
-      imgEdward.style.display = "block";
-      imgSandra.style.display = "block";
-      imgWill.style.display = "block";
-      imgJosephine.style.display = "block";
-      imgJenny.style.display = "block";
-      imgKarl.style.display = "block";
-      imgNortherWinslow.style.display = "block";
-      imgJingEPing.style.display = "block";
-      imgAmosCalloway.style.display = "block";
-      imgStrega.style.display = "block";
-      imgDonPrice.style.display = "block";
+      imgEdward.style.opacity = 1;
+      imgSandra.style.opacity = 1;
+      imgSandra.style.left = "30px";
+      hoverSandra.style.left = "30px";
+      imgWill.style.opacity = 1;
+      imgWill.style.left = "-75px";
+      hoverWill.style.left = "-70px";
+      imgJosephine.style.opacity = 1;
+      imgJosephine.style.left = "-130px";
+      hoverJosephine.style.left = "-140px";
+      imgJenny.style.opacity = 1;
+      imgJenny.style.left = "90px";
+      hoverJenny.style.left = "90px";
+      imgKarl.style.opacity = 1;
+      imgKarl.style.left = "-170px";
+      hoverKarl.style.left = "-160px";
+      imgNortherWinslow.style.opacity = 1;
+      imgNortherWinslow.style.left = "150px";
+      hoverNortherWinslow.style.left = "100px";
+      imgJingEPing.style.opacity = 1;
+      imgJingEPing.style.left = "210px";
+      hoverJingEPing.style.left = "200px";
+      imgAmosCalloway.style.opacity = 1;
+      imgAmosCalloway.style.left = "-240px";
+      hoverAmosCalloway.style.left = "-270px";
+      imgStrega.style.opacity = 1;
+      imgStrega.style.left = "-310px";
+      hoverStrega.style.left = "-310px";
+      imgDonPrice.style.opacity = 1;
+      imgDonPrice.style.left = "270px";
+      hoverDonPrice.style.left = "260px";
       break;
     case 25:
-      imgEdward.style.display = "block";
+      imgEdward.style.opacity = 1;
+      imgEdward.style.filter = "blur(4px)"
       break;
     case 26:
-      imgEdward.style.display = "block";
+      imgEdward.style.opacity = 1;
       break;
   }
 
-  // Imposta l'opacità su 1 per tutte le immagini mostrate
-  allImages.forEach(img => {
-    img.style.opacity = (img.style.display === "block") ? 1 : 0;
-  });
 }
+
+const hoverTexts = document.querySelectorAll(".hover-text");
+
+// Funzione per gestire l'evento di passaggio del mouse su un'icona
+function handleIconMouseOver(iconId) {
+  const correspondingText = document.querySelector(`#${iconId}-hover`);
+  correspondingText.style.opacity = 1;
+}
+
+// Funzione per gestire l'evento di uscita del mouse da un'icona
+function handleIconMouseOut(iconId) {
+  const correspondingText = document.querySelector(`#${iconId}-hover`);
+  correspondingText.style.opacity = 0;
+}
+
+// Aggiungi eventi di mouseover e mouseout a tutte le icone
+const iconIds = ["edward", "strega", "sandra", "donprice", "jenny", "amoscalloway", "northerwinslow", "will", "josephine", "karl", "jingeping"];
+iconIds.forEach((iconId) => {
+  const icon = document.querySelector(`#img-${iconId}`);
+  icon.addEventListener("mouseover", () => handleIconMouseOver(iconId));
+  icon.addEventListener("mouseout", () => handleIconMouseOut(iconId));
+});
 
 function handleStepExit(response) {
   response.element.classList.remove("is-active");
@@ -447,14 +539,14 @@ function handleStepExit(response) {
   if (response.index === 0 && response.direction === "up") {
     document.documentElement.style.backgroundColor = ""; // Ripristina il colore di sfondo predefinito
     textContainer.style.opacity = 0;
-    imgEdward.style.display = "none";
+    imgEdward.style.opacity = 0;
   }
 
   // Controlla se si sta uscendo verso il basso dall'ultimo step
   if (response.index === step.length - 1 && response.direction === "down") {
     document.documentElement.style.backgroundColor = "#1d1d1d";
     textContainer.style.opacity = 0;
-    imgEdward.style.display = "none";
+    imgEdward.style.opacity = 0;
   }
 }
 
