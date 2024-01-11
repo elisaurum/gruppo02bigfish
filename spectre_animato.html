@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        .container {
+            position: relative;
+            perspective: 1000px; /* Aggiunge prospettiva per l'effetto 3D */
+        }
+        .img1 {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+        }
+        .img2 {
+            position: absolute;
+            top: 100px;
+            bottom: 0;
+            transform-origin: center top; /* Punto di origine della trasformazione */
+            animation: tilt 5s infinite alternate; /* Aggiunge l'animazione di oscillazione */
+        }
+
+        @keyframes tilt {
+            0% {
+                transform: rotateX(0.5deg); /* Inclina l'immagine verso di te */
+            }
+            100% {
+                transform: rotateX(-0.5deg); /* Inclina l'immagine in direzione opposta */
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <img class="img1" src="Immagini animazioni/sfondo/Spectre1 senza scarpe.png">
+        <img class="img2" src="Immagini animazioni/Spectre1 scarpe.png">
+    </div>
+</body>
+</html>

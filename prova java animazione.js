@@ -113,7 +113,6 @@ d3.select("body")
     .style("left", marginLeft + "px")
     .style("background-color", "none");
 
-    
 
 // Mappatura dei colori per personaggio
 const colorMap = {
@@ -502,6 +501,39 @@ function showImagesForStep(index) {
 
 const hoverTexts = document.querySelectorAll(".hover-text");
 
+//function resizeIframe() {
+ // var illustrazioniContainers = document.querySelectorAll('.illustrazioni');
+ // illustrazioniContainers.forEach(function(container) {
+ //     var iframe = container.querySelector('iframe');
+//if (iframe) {
+  //var containerRect = container.getBoundingClientRect();
+  //iframe.style.width = containerRect.width + 'px';
+ // iframe.style.height = containerRect.height + 'px';
+//}
+//});
+//} 
+function resizeIframe() {
+  var iframeContainer = document.getElementById('lago1_iframe');
+
+  if (iframeContainer) {
+      var iframe = iframeContainer.contentDocument.querySelector('iframe');
+
+      if (iframe) {
+          var containerRect = iframeContainer.getBoundingClientRect();
+
+          iframe.style.width = containerRect.width + 'px';
+          iframe.style.height = containerRect.height + 'px';
+      }
+  }
+}
+
+// Chiama la funzione al caricamento della pagina e al ridimensionamento della finestra
+window.addEventListener('load', resizeIframe);
+window.addEventListener('resize', resizeIframe);
+
+// Chiama la funzione al caricamento della pagina e al ridimensionamento della finestra
+window.addEventListener('load', resizeIframe);
+window.addEventListener('resize', resizeIframe);
 // Funzione per gestire l'evento di passaggio del mouse su un'icona
 function handleIconMouseOver(iconId) {
   const correspondingText = document.querySelector(`#${iconId}-hover`);

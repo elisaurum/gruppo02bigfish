@@ -1,0 +1,33 @@
+<!doctype HTML>
+<html>
+    <style>
+        .container{
+            position: relative;
+        }
+        .img1{
+            position: absolute;
+            top: 0;
+            bottom: 0;
+        }
+        .img2 {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            opacity: 0; /* Imposta l'opacità iniziale a 0 */
+            transition: opacity 0.5s ease-in-out; /* Aggiunge un effetto di transizione */
+            animation: pulse 3s infinite alternate; /* Aggiunge l'animazione di pulsazione */
+        }
+        @keyframes pulse {
+            0% { opacity: 0; } /* Opacità iniziale */
+            100% { opacity: 1; } /* Opacità finale */
+        }
+    </style>
+    <body>
+        <div class="container">
+            <img class="img1" src="Immagini animazioni/sfondo/Casa Strega spente.png" >
+            <img class="img2" src="Immagini animazioni/sfondo/Casa Strega accese.png" >
+        </div>
+    </body>
+</html>
+
+

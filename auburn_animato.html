@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        .container {
+            position: relative;
+        }
+        .img1 {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+        }
+        .img2 {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            animation: sway 4s ease-in-out infinite alternate; /* Applica l'animazione di sway */
+            transform-origin: center center; /* Imposta il punto di ancoraggio al centro */
+        }
+
+        @keyframes sway {
+            0% {
+                transform: rotateY(0deg) rotateX(0deg) skewX(-0.5deg) skewY(0.5deg);
+            }
+            100% {
+                transform: rotateY(13deg) rotateX(0deg) skewX(0.5deg) skewY(-0.5deg);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        
+        <img class="img1" src="Immagini animazioni/Auburn senza foglie.png">
+        <img class="img2" src="Immagini animazioni/Foglie Auburn.png">
+        
+    </div>
+</body>
+</html>

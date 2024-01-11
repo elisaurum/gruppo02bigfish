@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        .container {
+            position: relative;
+            height: 50vh; /* Imposta l'altezza al 50% della viewport height */
+            width: 70vw; /* Imposta la larghezza al 70% della viewport width */
+            margin: auto; /* Centra il contenuto orizzontalmente */
+        }
+
+        .img1,
+        .img2 {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            width: 100%; /* Rendi le immagini larghe al 100% del contenitore */
+        }
+
+        .img2 {
+            left: 100%; /* Posiziona l'immagine fuori dallo schermo a destra */
+            animation: slideLeft 20s linear infinite; /* Aggiunge l'animazione di scorrimento */
+        }
+
+        @keyframes slideLeft {
+            0% { left: 30%; } /* Posizione iniziale a destra */
+            100% { left: -30%; } /* Posizione finale a sinistra */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <img class="img1" src="Immagini animazioni/sfondo/Lago1 senza nebbia.png">
+        <img class="img2" src="Immagini animazioni/nebbia lago1.png">
+    </div>
+</body>
+</html>
