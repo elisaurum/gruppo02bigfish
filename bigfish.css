@@ -290,7 +290,7 @@ h1 {
     height: 80px;
     width: 120px;
     position: fixed;
-    bottom: 10px;
+    bottom: 20px;
     right: 30px;
     padding: 10px 10px;
     z-index: 9999;
@@ -312,7 +312,7 @@ h1 {
 .popup {
     display: none;
     position: fixed;
-    bottom: calc(90px + 10px); /* Altezza del bottone + 10px di spazio */
+    bottom: calc(90px + 20px); /* Altezza del bottone + 10px di spazio */
     right: 30px; /* Distanza da sinistra */
     width: 300px;
     background-color: rgba(0, 0, 0, 0.3);
