@@ -1,0 +1,69 @@
+<!doctype HTML>
+<html>
+    <style>
+        .container{
+            position: relative;
+        }
+        .img1{
+            position: absolute;
+            top: 0;
+            bottom: 0;
+        }
+        .img2 {
+            position: absolute;
+            height: 75px;
+            width: 75 px;
+            top: 2040px;
+            bottom: 0;
+            right: 500px;
+            animation: slideLeft 8s linear infinite, rotate 6s linear infinite; /* Applica entrambe le animazioni */
+            
+        }
+        .img3{
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: -127px;
+            opacity: 0; /* Imposta l'opacità iniziale a 0 */
+            transition: opacity 0.5s ease-in-out; /* Aggiunge un effetto di transizione */
+            animation: pulse 3s infinite alternate; /* Aggiunge l'animazione di pulsazione */
+            
+        }
+        
+        @keyframes pulse {
+            0% { opacity: 0; } /* Opacità iniziale */
+            100% { opacity: 1; } /* Opacità finale */
+        }
+      
+
+        @keyframes rotate {
+    from {
+        transform: rotate(360deg);
+        transform-origin: center center; /* Imposta il punto di ancoraggio al centro */
+    } 
+    to {
+        transform: rotate(0deg);
+        transform-origin: center center; /* Assicura che il punto di ancoraggio rimanga al centro */
+    }
+}
+@keyframes slideLeft {
+    0% { 
+        left: 55%; /* Posizione iniziale a destra */
+    } 
+    100% { 
+        left: calc(55% - 300px); /* Posizione finale a sinistra, spostandosi di 300px verso sinistra rispetto al bordo destro */
+    }
+ }
+
+
+    </style>
+    <body>
+        <div class="container">
+            <img class="img1" src="images/circo.png" >
+            <img class="img2" src="Immagini animazioni/Palla Circo2.1.png" >
+            <img class="img3" src="Immagini animazioni/lucine Circo1.png" >
+        </div>
+    </body>
+</html>
+
+

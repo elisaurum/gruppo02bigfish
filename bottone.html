@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        /* Stile per il bottone */
+        .button {
+            height: 80px;
+            width: 80px;
+            position: fixed;
+            bottom: 10px;
+            right: 30px;
+            padding: 10px 10px;
+            background-color: transparent;
+            background-image: url(icons/edward.png);
+            background-size: cover; /* Opzione: regola la dimensione dell'immagine */
+            background-position: center;
+            border: none;
+            border-radius: 25px 25px;
+            cursor: pointer;
+        }
+
+        /* Stile per il popup */
+        .popup {
+            display: none;
+            position: fixed;
+            bottom: calc(90px + 10px); /* Altezza del bottone + 10px di spazio */
+            right: 30px; /* Distanza da sinistra */
+            width: 250px;
+            background-color: transparent;
+            border: 1px solid hsl(0, 0%, 0%);
+            padding-left: 20px;
+            padding-top: 5px;
+            z-index: 2; /* Imposta z-index superiore per il popup */
+            column-count: 2; /* Divide il testo in due colonne */
+            column-gap: 5px;
+            border-radius: 25px 25px;
+            box-shadow: 0px 0px 10px 5px rgba(0, 0, 0, 0.3);
+        }
+
+        .popup.show {
+            display: block; /* Mostra il popup quando ha la classe 'show' */
+        }
+        .icon-name {
+            font-family: 'Hedvig', Arial, Helvetica, sans-serif;
+            text-align: left;
+            font-size: 10px;
+            color: white;
+        }
+        .icon {
+            width: 30%;
+            height: auto;
+            display: inline-block;
+            vertical-align: middle;
+            margin-right: 5px;
+        }
+    </style>
+</head>
+<body style="background-color: rgb(228, 126, 207);">
+    <button class="button" onclick="togglePopup()"></button>
+    <div class="popup" id="popup">
+        <div>
+            <p class="icon-name"><span><img class=icon src="icons/amoscalloway.png" alt="Amos"></span>Amos Calloway</p>
+            <p class="icon-name"><span><img class=icon src="icons/donprice.png" alt="donprice"></span>Don Price</p>
+            <p class="icon-name"><span><img class=icon src="icons/edward.png" alt="edward"></span>Edward</p>
+            <p class="icon-name"><span><img class=icon src="icons/jenny.png" alt="jenny"></span>Jenny</p>
+            <p class="icon-name"><span><img class=icon src="icons/jingeping.png" alt="jingeping"></span>Jing e Ping</p>
+            <p class="icon-name"><span><img class=icon src="icons/josephine.png" alt="josephine"></span>Josephine</p>
+            <p class="icon-name"><span><img class=icon src="icons/karl.png" alt="karl"></span>Karl</p>
+            <p class="icon-name"><span><img class=icon src="icons/northerwinslow.png" alt="northerwinslow"></span>Winslow</p>
+            <p class="icon-name"><span><img class=icon src="icons/sandra.png" alt="sandra"></span>Sandra</p>
+            <p class="icon-name"><span><img class=icon src="icons/strega.png" alt="strega"></span>Strega</p>
+            <p class="icon-name"><span><img class=icon src="icons/will.png" alt="will"></span>Will</p>
+            
+            
+        </div>
+    </div>
+
+    <script>
+        function togglePopup() {
+            var popup = document.getElementById("popup");
+            popup.classList.toggle("show"); // Aggiunge o rimuove la classe 'show'
+        }
+    </script>
+</body>
+</html>

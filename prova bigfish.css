@@ -1,0 +1,296 @@
+@font-face {
+    font-family: 'Tim Burton';
+    src: url('fonts/alice-in-wonderland.ttf') format('truetype');
+    font-weight: 500
+}
+
+/* @font-face {
+    font-family: 'Trinigan FG';
+    src: url('fonts/trinigan-fg.ttf') format('truetype')
+} */
+
+html {
+    background-color: #1d1d1d;
+    transition: all .5s ease-in-out;
+}
+
+h1 {
+    font-family: 'Tim Burton', Arial, Helvetica, sans-serif;
+    text-align: center;
+    padding: 0 4px;
+    font-size: 70px;
+    font-weight: 10;
+    color: white
+}
+
+svg {
+    z-index: 1
+}
+
+.numbers {
+    font-family:'Tim Burton', Times, serif;
+    font-size: 15px;
+    color: white
+}
+
+.luogo {
+    position: absolute;
+    z-index: -1;
+    margin-left: 9px;
+    margin-right: 9px;
+    transition: all .5s ease-in-out;
+    display: flex; /* Aggiunto display flex per abilitare le proprietà flex */
+    justify-content: center; /* Centra orizzontalmente all'interno di .luogo */
+    align-items: flex-start;
+    opacity: 100%
+}
+
+.luogo-copia {
+    position: absolute;
+    z-index: 2;
+    margin-left: 9px;
+    margin-right: 9px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all .5s ease-in-out;
+    filter: grayscale(100%);
+}
+
+#reality1, #reality2, #reality3, #reality4, #reality5, #reality6, #reality7, #reality8 {
+    z-index: 4;
+    background-color: rgba(0, 0, 0, 0.0);
+    filter: none;
+}
+
+.illustrazioni {
+    width: 30%;
+    height: auto;
+    opacity: 0.3;
+    padding: 0 0 0 12%;
+    transition: all .5s ease-in-out;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.illustrazioni iframe {
+    width: auto;
+    height: 100%;
+    object-fit: contain;
+}
+
+.smaller-illustrazioni {
+    height: 95%;
+    opacity: 0.3;
+    padding: 0 0 0 12%;
+    transition: all .5s ease-in-out
+}
+
+.luogo-copia.is-active {
+    filter: none;
+    backdrop-filter: none;
+}
+
+.luogo-copia.is-active .illustrazioni {
+    transition: all .5s ease-in-out;
+    transform: scale(200%);
+    opacity: 1;
+    z-index: 9999;
+}
+
+.luogo-copia.is-active .smaller-illustrazioni {
+    transition: all .5s ease-in-out;
+    transform: scale(200%);
+    opacity: 1;
+    z-index: 2
+}
+
+.luogo-copia.is-active #spectre2 {
+    transition: all .5s ease-in-out;
+    transform: scale(165%);
+    opacity: 1;
+    z-index: 2
+}
+
+.icontop-container {
+    position: absolute;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    transition: opacity .3s ease-in-out;
+    top: -6%;
+    padding: 0 0 0 2%;
+    margin: 0 9px
+}
+
+@font-face {
+    font-family: 'Hedvig';
+    src: url('fonts/hedvig_letters_serif.ttf') format('truetype')
+}
+
+body, html {
+    margin: 0;
+    padding: 0
+}
+
+h1 {
+    font-family: 'Tim Burton', Arial, Helvetica, sans-serif;
+    text-align: center;
+    padding: 50px 4px 0px 4px;
+    font-size: 180px;
+    font-weight: 10;
+    color: white
+}
+
+#descrizione {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#freccia {
+    padding: 0 0 70px 0;
+    width: 100px;
+}
+
+.testo-descrizione {
+    font-family: 'Hedvig', Arial, Helvetica, sans-serif;
+    text-align: center;
+    font-size: 20px;
+    color: white;
+    width: 1000px;
+    padding: 80px 0 0 0
+}
+
+#legenda {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+    padding: 55px 0;
+}
+
+.legenda-riga {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+    padding: 0 0 0 50px
+}
+
+.titolo-legenda {
+    font-family: 'Tim Burton', Arial, Helvetica, sans-serif;
+    font-size: 30px;
+    color: white
+}
+
+.icon-name {
+    font-family: 'Hedvig', Arial, Helvetica, sans-serif;
+    text-align: left;
+    font-size: 24px;
+    color: white;
+}
+
+#text-container {
+    font-size: 18px;
+    color: white;
+    font-family: 'Hedvig', Arial, Helvetica, sans-serif;
+    position: fixed;
+    top: 50%;
+    left: 20%;
+    transform: translate(-50%, -50%);
+    z-index: 9999;
+    width: 20%;
+    text-shadow: #1d1d1d 0 0 7px;
+}
+
+#img-container {
+    display: flex;
+    flex-direction: row;
+    position: fixed;
+    justify-content: center;
+    top: 50%;
+    left: 62%;
+    transform: translate(-50%, -50%);
+    z-index: 3;
+}
+
+.legend-icon {
+    position: relative;
+    height: 65px;
+    margin: 0;
+    filter: drop-shadow(#ffffff29 0 0 7px)
+}
+
+#legend-karl {
+    height: 82px;
+    margin-right: 12px
+}
+
+#legend-will {
+    height: 82px;
+    margin-right: 5px
+}
+
+#legend-josephine {
+    height: 82px;
+}
+
+#legend-winslow {
+    height: 55px;
+}
+
+#legend-calloway {
+    height: 45px
+}
+
+.icon {
+    position: absolute;
+    height: 65px;
+    margin: 0;
+    opacity: 0;
+    transition: opacity .3s ease-in-out;
+}
+
+#img-amoscalloway, #img-northerwinslow {
+    height: 50px
+}
+
+#img-northerwinslow {
+    top: 8px
+}
+
+#img-karl, #img-josephine {
+    height: 80px;
+}
+
+#img-sandra, #img-strega {
+    top: -5px
+}
+
+#text-container.fade-out {
+    opacity: 0;
+}
+
+.hover-text {
+    position: absolute;
+    display: flex;
+    top: -40px;
+    width: 500px;
+    font-family: 'Hedvig', Arial, Helvetica, sans-serif;
+    text-align: center;
+    margin: 0;
+    font-size: 20px;
+    color: white;
+    text-shadow: #000000 0 0 4px;
+    opacity: 0;
+    transition: opacity .3s ease-in-out;
+}
+
+.hover-text.hover-text-visible {
+  opacity: 1;
+}
