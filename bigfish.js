@@ -7,7 +7,7 @@ const datasetprova = await d3.csv("datasetprova.csv")
 const height = 15300;
 const marginLeft = 50;
 const marginRight = 10;
-const marginTop = 156.3;
+const marginTop = 84.5;
 const marginBottom = 50;
 const marginBottomExtended = 200; // Per aumentare lo scroll in fondo
 const width = window.innerWidth - marginLeft;
@@ -93,7 +93,7 @@ d3.select("body")
     .data(datasetprova)
     .join("div")
     .attr("class", "luogo")
-    .style("height", (d, i, nodes) => i < nodes.length - 1 ? (sScale(heightData[i]) - 156) + "px" : sScale(heightData[i]) + "px")
+    .style("height", (d, i, nodes) => i < nodes.length - 1 ? (sScale(heightData[i]) - 86.2) + "px" : sScale(heightData[i]) + "px")
     .style("width", (width - marginLeft - marginRight) + "px")
     .style("position", "absolute")
     .style("top", d => (sScale(d["START"]) + marginTop*17.25) + "px")  // Regola il valore top
@@ -106,7 +106,7 @@ d3.select("body")
     .data(datasetprova)
     .join("div")
     .attr("class", "luogo-copia")
-    .style("height", (d, i, nodes) => i < nodes.length - 1 ? (sScale(heightData[i]) - 156) + "px" : sScale(heightData[i]) + "px")
+    .style("height", (d, i, nodes) => i < nodes.length - 1 ? (sScale(heightData[i]) - 86.2) + "px" : sScale(heightData[i]) + "px")
     .style("width", (width - marginLeft - marginRight) + "px")
     .style("position", "absolute")
     .style("top", d => (sScale(d["START"]) + marginTop*17.25) + "px")  // Regola il valore top

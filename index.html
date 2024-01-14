@@ -28,6 +28,7 @@
             Gli elementi ripresi in questa rappresentazione sono i luoghi del racconto e i loro colori <br>preponderanti, che colorano lo sfondo, il minutaggio del film,
             sui quali si basa la dimensione dei <br>rettangoli dei luoghi, e soprattutto i personaggi presenti nel racconto di Edward.
         </p>
+
         <div id="legenda">
             <p class="titolo-legenda">LEGENDA DEI PERSONAGGI</p>
             <div class="legenda-riga">
@@ -144,18 +145,53 @@
     <div id="text-container"></div>
 
     <div id="img-container">
-        <p class="hover-text" id="amoscalloway-hover">Amos Calloway</p><img class="icon" id="img-amoscalloway" src="icons/amoscalloway.png" alt="Amos Calloway">
-        <p class="hover-text" id="northerwinslow-hover">Norther Winslow</p><img class="icon" id="img-northerwinslow" src="icons/northerwinslow.png" alt="Norther Winslow">
-        <p class="hover-text" id="donprice-hover">Don Price</p><img class="icon" id="img-donprice" src="icons/donprice.png" alt="Don Price">
-        <p class="hover-text" id="strega-hover">Strega</p><img class="icon" id="img-strega" src="icons/strega.png" alt="Strega">
-        <p class="hover-text" id="sandra-hover">Sandra</p><img class="icon" id="img-sandra" src="icons/sandra.png" alt="Sandra">
-        <p class="hover-text" id="edward-hover">Edward</p><img class="icon" id="img-edward" src="icons/edward.png" alt="Edward">
-        <p class="hover-text" id="karl-hover">Karl</p><img class="icon" id="img-karl" src="icons/karl.png" alt="Karl">
-        <p class="hover-text" id="jenny-hover">Jenny</p><img class="icon" id="img-jenny" src="icons/jenny.png" alt="Jenny">
-        <p class="hover-text" id="jingeping-hover">Jing e Ping</p><img class="icon" id="img-jingeping" src="icons/jingeping.png" alt="Jing e Ping">
-        <p class="hover-text" id="josephine-hover">Josephine</p><img class="icon" id="img-josephine" src="icons/josephine.png" alt="Josephine">
-        <p class="hover-text" id="will-hover">Will</p><img class="icon" id="img-will" src="icons/will.png" alt="Will">
+        <p class="hover-text" id="amoscalloway-hover">Amos Calloway</p>
+        <img class="icon" id="img-amoscalloway" src="icons/amoscalloway.png" alt="Amos Calloway">
+        <p class="hover-text" id="northerwinslow-hover">Norther Winslow</p>
+        <img class="icon" id="img-northerwinslow" src="icons/northerwinslow.png" alt="Norther Winslow">
+        <p class="hover-text" id="donprice-hover">Don Price</p>
+        <img class="icon" id="img-donprice" src="icons/donprice.png" alt="Don Price">
+        <p class="hover-text" id="strega-hover">Strega</p>
+        <img class="icon" id="img-strega" src="icons/strega.png" alt="Strega">
+        <p class="hover-text" id="sandra-hover">Sandra</p>
+        <img class="icon" id="img-sandra" src="icons/sandra.png" alt="Sandra">
+        <p class="hover-text" id="edward-hover">Edward</p>
+        <img class="icon" id="img-edward" src="icons/edward.png" alt="Edward">
+        <p class="hover-text" id="karl-hover">Karl</p>
+        <img class="icon" id="img-karl" src="icons/karl.png" alt="Karl">
+        <p class="hover-text" id="jenny-hover">Jenny</p>
+        <img class="icon" id="img-jenny" src="icons/jenny.png" alt="Jenny">
+        <p class="hover-text" id="jingeping-hover">Jing e Ping</p>
+        <img class="icon" id="img-jingeping" src="icons/jingeping.png" alt="Jing e Ping">
+        <p class="hover-text" id="josephine-hover">Josephine</p>
+        <img class="icon" id="img-josephine" src="icons/josephine.png" alt="Josephine">
+        <p class="hover-text" id="will-hover">Will</p>
+        <img class="icon" id="img-will" src="icons/will.png" alt="Will">
     </div>
 
+    <script>
+        function togglePopup() {
+            var popup = document.getElementById("popup");
+            popup.classList.toggle("show"); // Aggiunge o rimuove la classe 'show'
+        }
+    </script>
+    <button class="button" onclick="togglePopup()">
+        <p id="button-text">Legenda</p>
+    </button>
+    <div class="popup" id="popup">
+        <div>
+            <p class="icon-name2"><span><img class=icon2 src="icons/amoscalloway.png" alt="Amos"></span>Amos Calloway</p>
+            <p class="icon-name2"><span><img class=icon2 src="icons/donprice.png" alt="donprice"></span>Don Price</p>
+            <p class="icon-name2"><span><img class=icon2 src="icons/edward.png" alt="edward"></span>Edward</p>
+            <p class="icon-name2"><span><img class=icon2 src="icons/jenny.png" alt="jenny"></span>Jenny</p>
+            <p class="icon-name2"><span><img class=icon2 src="icons/jingeping.png" alt="jingeping"></span>Jing e Ping</p>
+            <p class="icon-name2"><span><img class=icon2 src="icons/josephine.png" alt="josephine"></span>Josephine</p>
+            <p class="icon-name2"><span><img class=icon2 src="icons/karl.png" alt="karl"></span>Karl</p>
+            <p class="icon-name2"><span><img class=icon2 src="icons/northerwinslow.png" alt="northerwinslow"></span>Winslow</p>
+            <p class="icon-name2"><span><img class=icon2 src="icons/sandra.png" alt="sandra"></span>Sandra</p>
+            <p class="icon-name2"><span><img class=icon2 src="icons/strega.png" alt="strega"></span>Strega</p>
+            <p class="icon-name2"><span><img class=icon2 src="icons/will.png" alt="will"></span>Will</p>
+        </div>
+    </div>
 </body>
 </html>
