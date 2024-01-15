@@ -103,6 +103,7 @@ svg {
     z-index: 2
 }
 
+
 .icontop-container {
     position: absolute;
     display: flex;
@@ -163,6 +164,10 @@ h1 {
     padding: 55px 0;
 }
 
+.legenda {
+    display: none
+}
+
 .legenda-riga {
     display: flex;
     flex-direction: row;
@@ -209,41 +214,17 @@ h1 {
     z-index: 3;
 }
 
-.legend-icon {
-    position: relative;
-    height: 65px;
-    margin: 0;
-    filter: drop-shadow(#ffffffbc 0 0 10px)
-}
-
-#legend-karl {
-    height: 82px;
-    margin-right: 12px
-}
-
-#legend-will {
-    height: 82px;
-    margin-right: 5px
-}
-
-#legend-josephine {
-    height: 82px;
-}
-
-#legend-winslow {
-    height: 55px;
-}
-
-#legend-calloway {
-    height: 45px
-}
-
 .icon {
     position: absolute;
     height: 65px;
     margin: 0;
     opacity: 0;
     transition: opacity .3s ease-in-out;
+    cursor: pointer
+}
+
+#img-edward {
+    z-index: 10
 }
 
 #img-amoscalloway, #img-northerwinslow {
@@ -276,9 +257,10 @@ h1 {
     margin: 0;
     font-size: 20px;
     color: white;
-    text-shadow: #000000 0 0 4px;
+    text-shadow: 0 0 3px #000000, 0 0 5px #000000;
     opacity: 0;
     transition: opacity .3s ease-in-out;
+    z-index: 9
 }
 
 .hover-text.hover-text-visible {

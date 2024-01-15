@@ -33,7 +33,7 @@ const yScale = d3.scaleLinear()
 
 // Creazione di una scala lineare basata sulla colonna "START" del dataset
 const sScale = d3.scaleLinear()
-.range([marginTop, height - marginBottom*58.55 - marginBottomExtended]) // Per far sì che rientri nella scala
+.range([marginTop, height - marginBottom*57.7 - marginBottomExtended]) // Per far sì che rientri nella scala
 .domain(d3.extent(datasetprova, d => d["START"]));
 
 // Estrazione dei personaggi dalle colonne dalla 3 in poi
@@ -52,14 +52,7 @@ const gruppi = svg.selectAll("g")
 .data(datasetprova)
 .join("g");
 
-// Aggiungo l'asse y con yScale che mi indica solo la fine del film (120)
-svg.append("g")
-.attr("transform", "translate(" + marginLeft + " , 0)")
-.call(d3.axisLeft(yScale)
-.tickFormat(d => d === 120 ? "02:00" : d)
-.tickValues([yScale.domain()[1]]))
-.call((g) => g.select (".domain").remove())
-.attr("class", "numbers");
+
 
 // Aggiungo l'asse a sinistra con sScale con i tick corrispondenti ai valori della scala (e quindi all'inizio della scena)
 svg.append("g")
@@ -307,6 +300,7 @@ function showImagesForStep(index) {
   const allImages = [imgEdward, imgStrega, imgSandra, imgDonPrice, imgJenny, imgAmosCalloway, imgNortherWinslow, imgWill, imgJosephine, imgKarl, imgJingEPing];
   allImages.forEach(img => {
     img.style.opacity = 0;
+    img.style.left = "-99999px";
     img.style.filter = "drop-shadow(#ffffff78 0 0 7px)"
   });
 
@@ -319,13 +313,19 @@ function showImagesForStep(index) {
   switch (index) {
     case 0:
       imgEdward.style.opacity = 1;
+      imgEdward.style.left = "-30px";
+      hoverEdward.style.left = "-30px";
       break;
     case 1:
       imgEdward.style.opacity = 1;
+      imgEdward.style.left = "-30px";
+      hoverEdward.style.left = "-30px";
       imgEdward.style.filter = "blur(4px)";
       break;
     case 2:
       imgEdward.style.opacity = 1;
+      imgEdward.style.left = "-30px";
+      hoverEdward.style.left = "-30px";
       imgStrega.style.opacity = 1;
       imgStrega.style.left = "-100px";
       hoverStrega.style.left = "-95px";
@@ -335,22 +335,30 @@ function showImagesForStep(index) {
       break;
     case 3:
       imgEdward.style.opacity = 1;
+      imgEdward.style.left = "-30px";
+      hoverEdward.style.left = "-30px";
       imgEdward.style.filter = "blur(4px)"
       break;
     case 4:
       imgEdward.style.opacity = 1;
+      imgEdward.style.left = "-30px";
+      hoverEdward.style.left = "-30px";
       imgDonPrice.style.opacity = 1;
       imgDonPrice.style.left = "40px";
       hoverDonPrice.style.left = "28px";
       break;
     case 5:
       imgEdward.style.opacity = 1;
+      imgEdward.style.left = "-30px";
+      hoverEdward.style.left = "-30px";
       imgKarl.style.opacity = 1;
       imgKarl.style.left = "-80px";
       hoverKarl.style.left = "-70px";
       break;
     case 6:
       imgEdward.style.opacity = 1;
+      imgEdward.style.left = "-30px";
+      hoverEdward.style.left = "-30px";
       imgNortherWinslow.style.opacity = 1;
       imgNortherWinslow.style.left = "-100px";
       hoverNortherWinslow.style.left = "-150px";
@@ -360,13 +368,19 @@ function showImagesForStep(index) {
       break;
     case 7:
       imgEdward.style.opacity = 1;
+      imgEdward.style.left = "-30px";
+      hoverEdward.style.left = "-30px";
       break;
     case 8:
       imgEdward.style.opacity = 1;
+      imgEdward.style.left = "-30px";
+      hoverEdward.style.left = "-30px";
       imgEdward.style.filter = "blur(4px)"
       break;
     case 9:
       imgEdward.style.opacity = 1;
+      imgEdward.style.left = "-30px";
+      hoverEdward.style.left = "-30px";
       imgAmosCalloway.style.opacity = 1;
       imgAmosCalloway.style.left = "90px";
       hoverAmosCalloway.style.left = "60px";
@@ -379,6 +393,8 @@ function showImagesForStep(index) {
       break;
     case 10:
       imgEdward.style.opacity = 1;
+      imgEdward.style.left = "-30px";
+      hoverEdward.style.left = "-30px";
       imgDonPrice.style.opacity = 1;
       imgDonPrice.style.left = "-90px";
       hoverDonPrice.style.left = "-105px";
@@ -388,51 +404,73 @@ function showImagesForStep(index) {
       break;
     case 11:
       imgEdward.style.opacity = 1;
+      imgEdward.style.left = "-30px";
+      hoverEdward.style.left = "-30px";
       imgEdward.style.filter = "blur(4px)"
       break;
     case 12:
       imgEdward.style.opacity = 1;
+      imgEdward.style.left = "-30px";
+      hoverEdward.style.left = "-30px";
       imgSandra.style.opacity = 1;
       imgSandra.style.left = "30px";
       hoverSandra.style.left = "30px";
       break;
     case 13:
       imgEdward.style.opacity = 1;
+      imgEdward.style.left = "-30px";
+      hoverEdward.style.left = "-30px";
       break;
     case 14:
       imgEdward.style.opacity = 1;
+      imgEdward.style.left = "-30px";
+      hoverEdward.style.left = "-30px";
       imgJingEPing.style.opacity = 1;
       imgJingEPing.style.left = "-90px";
       hoverJingEPing.style.left = "-105px";
       break;
     case 15:
       imgEdward.style.opacity = 1;
+      imgEdward.style.left = "-30px";
+      hoverEdward.style.left = "-30px";
       imgSandra.style.opacity = 1;
       imgSandra.style.left = "30px";
       hoverSandra.style.left = "30px";
       break;
     case 16:
       imgEdward.style.opacity = 1;
+      imgEdward.style.left = "-30px";
+      hoverEdward.style.left = "-30px";
       imgEdward.style.filter = "blur(4px)"
       break;
     case 17:
       imgEdward.style.opacity = 1;
+      imgEdward.style.left = "-30px";
+      hoverEdward.style.left = "-30px";
       break;
     case 18:
       imgEdward.style.opacity = 1;
+      imgEdward.style.left = "-30px";
+      hoverEdward.style.left = "-30px";
       imgNortherWinslow.style.opacity = 1;
       imgNortherWinslow.style.left = "-90px";
       hoverNortherWinslow.style.left = "-140px";
       break;
     case 19:
       imgEdward.style.opacity = 1;
+      imgEdward.style.left = "-30px";
+      hoverEdward.style.left = "-30px";
       imgEdward.style.filter = "blur(4px)"
       break;
     case 20:
       imgEdward.style.opacity = 1;
+      imgEdward.style.left = "-30px";
+      hoverEdward.style.left = "-30px";
       break;
     case 21:
       imgEdward.style.opacity = 1;
+      imgEdward.style.left = "-30px";
+      hoverEdward.style.left = "-30px";
       imgJenny.style.opacity = 1;
       imgJenny.style.left = "40px";
       hoverJenny.style.left = "40px";
@@ -442,10 +480,14 @@ function showImagesForStep(index) {
       break;
     case 22:
       imgEdward.style.opacity = 1;
+      imgEdward.style.left = "-30px";
+      hoverEdward.style.left = "-30px";
       imgEdward.style.filter = "blur(4px)"
       break;
     case 23:
       imgEdward.style.opacity = 1;
+      imgEdward.style.left = "-30px";
+      hoverEdward.style.left = "-30px";
       imgSandra.style.opacity = 1;
       imgSandra.style.left = "30px";
       hoverSandra.style.left = "30px";
@@ -458,6 +500,8 @@ function showImagesForStep(index) {
       break;
     case 24:
       imgEdward.style.opacity = 1;
+      imgEdward.style.left = "-30px";
+      hoverEdward.style.left = "-30px";
       imgSandra.style.opacity = 1;
       imgSandra.style.left = "30px";
       hoverSandra.style.left = "30px";
@@ -491,10 +535,14 @@ function showImagesForStep(index) {
       break;
     case 25:
       imgEdward.style.opacity = 1;
+      imgEdward.style.left = "-30px";
+      hoverEdward.style.left = "-30px";
       imgEdward.style.filter = "blur(4px)"
       break;
     case 26:
       imgEdward.style.opacity = 1;
+      imgEdward.style.left = "-30px";
+      hoverEdward.style.left = "-30px";
       break;
   }
 
