@@ -1,0 +1,41 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        .container {
+            position: relative;
+            height: 50vh; /* Imposta l'altezza al 50% della viewport height */
+            width: 70vw; /* Imposta la larghezza al 70% della viewport width */
+            margin: auto; /* Centra il contenuto orizzontalmente */
+        }
+
+        .img1,
+        .img2 {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            width: 100%; /* Rendi le immagini larghe al 100% del contenitore */
+        }
+
+        .img2 {
+             /* Posiziona l'immagine fuori dallo schermo a destra */
+            animation: opacità 5s linear infinite; /* Aggiunge l'animazione di scorrimento */
+        }
+
+        @keyframes opacità {
+            0% { opacity: 0%; } /* Posizione iniziale a destra */
+        50% { opacity: 80%; }
+        100% { opacity: 80%; } /* Posizione finale a sinistra */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <img class="img1" src="images/lago2.PNG">
+        <img class="img2" src="immaginianimazioni/nebbiaforesta.png">
+        
+    </div>
+</body>
+</html>
