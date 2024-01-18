@@ -95,14 +95,14 @@ svg {
     transition: all .5s ease-in-out;
     transform: scale(200%);
     opacity: 1;
-    z-index: 9999;
+    z-index: 40;
 }
 
 .luogo-copia.is-active .smaller-illustrazioni {
     transition: all .5s ease-in-out;
     transform: scale(200%);
     opacity: 1;
-    z-index: 9999;
+    z-index: 41;
 }
 
 .luogo-copia.is-active #spectre2{
@@ -209,7 +209,7 @@ h1 {
     transform: translate(-50%, -50%);
     z-index: 9997;
     width: 20%;
-    text-shadow: #1d1d1d 0 0 7px;
+    text-shadow: 1px 1px 2px black, 0 0 5px black;
 }
 
 #img-container {
@@ -356,6 +356,10 @@ h1 {
     top: 0;
     bottom: 0;
     height: 100%; /* Rendi le immagini larghe al 100% del contenitore */
+}
+
+.img2_lago1{
+    z-index: 9998
 }
 
 .img2_lago1 {
@@ -545,15 +549,102 @@ left: 40%; /* Posizione finale a sinistra, spostandosi di 300px verso sinistra r
     left: -16vw;
     top: -14vw;
     bottom: 0;
-    animation: sway 4s ease-in-out infinite alternate; /* Applica l'animazione di sway */
+    animation: sway2 4s ease-in-out infinite alternate; /* Applica l'animazione di sway */
     transform-origin: center center; /* Imposta il punto di ancoraggio al centro */
 }
 
-@keyframes sway {
+@keyframes sway2 {
     0% {
         transform: rotateY(0deg) rotateX(0deg) skewX(-0.5deg) skewY(0.5deg);
     }
     100% {
         transform: rotateY(13deg) rotateX(0deg) skewX(0.5deg) skewY(-0.5deg);
     }
+}
+
+.container_spectre2 {
+    position: relative;
+}
+.img1_spectre2 {
+    position: absolute;
+    height: 20vw;
+    left: -15vw;
+    top: -10vw;
+    bottom: 0;
+}
+.img2_spectre2 {
+    position: absolute;
+    height: 16vw;
+    left: -12vw;
+    top: -10vw;
+    animation: sway3 4s ease-in-out infinite alternate; /* Applica l'animazione di sway */
+    transform-origin: center center; /* Imposta il punto di ancoraggio al centro */
+}
+
+@keyframes sway3 {
+    0% {
+        transform: rotateY(0deg) rotateX(0deg) skewX(-0.5deg) skewY(0.5deg);
+    }
+    100% {
+        transform: rotateY(13deg) rotateX(0deg) skewX(0.5deg) skewY(-0.5deg);
+    }
+}
+
+.container_casajenny {
+    position: relative;
+}
+.img1_casajenny {
+    position: absolute;
+    height: 12vw;
+    left: -10vw;
+    top: -6vw;
+    bottom: 0;
+}
+
+.img2_casajenny {
+    position: absolute;
+    height: 9vw;
+    left: -10.5vw;
+    top: -4.5vw;
+    bottom: 0;
+    animation: sway4 4s ease-in-out infinite alternate; /* Applica l'animazione di sway */
+    transform-origin: center center; /* Imposta il punto di ancoraggio al centro */
+}
+
+@keyframes sway4 {
+    0% {
+        transform: rotateY(0deg) rotateX(0deg) skewX(-0.5deg) skewY(0.5deg);
+    }
+    100% {
+        transform: rotateY(13deg) rotateX(0deg) skewX(0.5deg) skewY(-0.5deg);
+    }
+}
+
+.container_lago2 {
+    position: relative;
+    height: 50vh; /* Imposta l'altezza al 50% della viewport height */
+    width: 70vw; /* Imposta la larghezza al 70% della viewport width */
+    margin: auto; /* Centra il contenuto orizzontalmente */
+}
+
+.img1_lago2,
+.img2_lago2 {
+    position: absolute;
+    top: 4vw;
+    left: 1.5vw;
+    bottom: 0;
+    width: 90%; /* Rendi le immagini larghe al 100% del contenitore */
+}
+
+.img2_lago2 {
+    width: 130%;
+    top: 1.5vw;
+    left: -2.8vw;
+    animation: opacità 5s linear infinite; /* Aggiunge l'animazione di scorrimento */
+}
+
+@keyframes opacità {
+    0% { opacity: 0%; } /* Posizione iniziale a destra */
+50% { opacity: 80%; }
+100% { opacity: 80%; } /* Posizione finale a sinistra */
 }
