@@ -248,6 +248,8 @@ function handleStepEnter(response) {
 
   // Ripristina l'opacità del text-container quando si entra in uno degli step
   document.querySelector("#text-container").style.opacity = 1;
+  document.querySelector(".button").style.opacity = 1;
+  document.querySelector(".button").style.right = "30px";
 
   lastScrollDirection = response.direction;
 }
@@ -301,7 +303,7 @@ function showImagesForStep(index) {
   allImages.forEach(img => {
     img.style.opacity = 0;
     img.style.left = "-99999px";
-    img.style.filter = "drop-shadow(#ffffff78 0 0 7px)"
+    img.style.filter = "drop-shadow(#ffffffa5 0 0 10px)"
   });
 
   const allHover = [hoverEdward, hoverStrega, hoverSandra, hoverDonPrice, hoverJenny, hoverAmosCalloway, hoverNortherWinslow, hoverWill, hoverJosephine, hoverKarl, hoverJingEPing];
@@ -581,20 +583,24 @@ function handleStepExit(response) {
   }
 
   const textContainer = document.querySelector("#text-container");
-  const imgEdward = document.querySelector("#img-edward")
+  const imgEdward = document.querySelector("#img-edward");
+  const button = document.querySelector(".button");
 
   // Controlla se si sta uscendo verso l'alto dal primo step
   if (response.index === 0 && response.direction === "up") {
     document.documentElement.style.backgroundColor = ""; // Ripristina il colore di sfondo predefinito
     textContainer.style.opacity = 0;
     imgEdward.style.opacity = 0;
+    button.style.opacity = 0
+    button.style.right = "-9999px"
   }
 
   // Controlla se si sta uscendo verso il basso dall'ultimo step
   if (response.index === step.length - 1 && response.direction === "down") {
     document.documentElement.style.backgroundColor = "#1d1d1d";
     textContainer.style.opacity = 0;
-    imgEdward.style.opacity = 0;
+    button.style.opacity = 0
+    button.style.right = "-9999px"
   }
 }
 
