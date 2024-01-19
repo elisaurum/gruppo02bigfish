@@ -48,7 +48,6 @@ svg {
 
 .luogo-copia {
     position: absolute;
-    z-index: 2;
     margin-left: 9px;
     margin-right: 9px;
     display: flex;
@@ -73,13 +72,15 @@ svg {
     display: flex;
     justify-content: center;
     align-items: center;
+    filter: drop-shadow(#00000097 0 0 7px)
 }
 
 .smaller-illustrazioni {
     height: 110%;
     opacity: 0.3;
     padding: 0 0 0 12%;
-    transition: all .5s ease-in-out
+    transition: all .5s ease-in-out;
+    filter: drop-shadow(#00000097 0 0 7px)
 }
 
 #casaedward img {
@@ -95,14 +96,12 @@ svg {
     transition: all .5s ease-in-out;
     transform: scale(200%);
     opacity: 1;
-    z-index: 40;
 }
 
 .luogo-copia.is-active .smaller-illustrazioni {
     transition: all .5s ease-in-out;
     transform: scale(200%);
     opacity: 1;
-    z-index: 41;
 }
 
 .luogo-copia.is-active #spectre2{
@@ -138,10 +137,12 @@ body, html {
 h1 {
     font-family: 'Tim Burton', Arial, Helvetica, sans-serif;
     text-align: center;
-    padding: 50px 4px 0px 4px;
+    padding: 0 4px;
+    margin: 15vw 0 30vw;
     font-size: 180px;
     font-weight: 10;
-    color: white
+    color: white;
+    text-shadow: 0 0 5px black;
 }
 
 #descrizione {
@@ -149,11 +150,40 @@ h1 {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    transition: all 0.5s ease-in-out;
 }
 
 #freccia {
-    padding: 0 0 70px 0;
-    width: 100px;
+    position: fixed;
+    bottom: 3vh;
+    left: 46%;
+    width: 15vh;
+    transition: all 0.5s ease-in-out;
+    animation: animazioneUpDown 3s ease-in-out infinite;
+}
+
+@keyframes animazioneUpDown {
+    0%, 100% {
+        transform: translateY(0); /* La posizione iniziale e finale è a translateY(0) */
+    }
+    50% {
+        transform: translateY(-2vw); /* Al 50%, sposta l'elemento verso l'alto di 20px */
+    }
+}
+
+#animazione-top {
+    position: absolute;
+    top: 7%;
+    left: 15vw;
+    width: 70vw;
+    transition: all 0.5s ease-in-out;
+    z-index: -1;
+    animation: UpDown 8s ease-in-out infinite;
+}
+
+@keyframes UpDown {
+    0%, 100% { top: 4%; } /* Posizione iniziale a destra */
+    50% { top: 9%; } /* Posizione finale a sinistra */
 }
 
 .testo-descrizione {
@@ -162,7 +192,7 @@ h1 {
     font-size: 20px;
     color: white;
     width: 1000px;
-    padding: 80px 0 0 0
+    padding: 80px 0 0 0;
 }
 
 #legenda {
@@ -197,6 +227,7 @@ h1 {
     text-align: left;
     font-size: 24px;
     color: white;
+    left: -99999px
 }
 
 #text-container {
@@ -220,7 +251,7 @@ h1 {
     top: 50%;
     left: 63%;
     transform: translate(-50%, -50%);
-    z-index: 3;
+    z-index: 9998;
 }
 
 .icon {
@@ -229,12 +260,11 @@ h1 {
     margin: 0;
     opacity: 0;
     transition: opacity .3s ease-in-out;
-    cursor: pointer
+    cursor: pointer;
+    z-index: 1;
+    left: -99999px
 }
 
-#img-edward {
-    z-index: 10
-}
 
 #img-amoscalloway, #img-northerwinslow {
     height: 50px
@@ -356,10 +386,6 @@ h1 {
     top: 0;
     bottom: 0;
     height: 100%; /* Rendi le immagini larghe al 100% del contenitore */
-}
-
-.img2_lago1{
-    z-index: 9998
 }
 
 .img2_lago1 {
@@ -640,11 +666,14 @@ left: 40%; /* Posizione finale a sinistra, spostandosi di 300px verso sinistra r
     width: 130%;
     top: 1.5vw;
     left: -2.8vw;
+    z-index: 9999;
     animation: opacità 5s linear infinite; /* Aggiunge l'animazione di scorrimento */
 }
 
 @keyframes opacità {
     0% { opacity: 0%; } /* Posizione iniziale a destra */
-50% { opacity: 80%; }
-100% { opacity: 80%; } /* Posizione finale a sinistra */
+    25% { opacity: 80%; }
+    50% { opacity: 80%; }
+    75% {opacity: 80%}
+    100% {opacity: 0%} /* Posizione finale a sinistra */
 }

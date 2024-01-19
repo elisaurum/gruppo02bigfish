@@ -12,8 +12,9 @@
     <script type="module" src="bigfish.js">
     </script>
     <h1>I luoghi di Big Fish</h1>
+    <img id="animazione-top" src="immaginianimazioni/nebbialago1.png">
+    <img id="freccia" src="images/freccia.png">
     <div id="descrizione">
-        <img id="freccia" src="images/freccia.png">
         <p class="testo-descrizione">&#34;Big Fish&#34; &#232; un film del 2003 diretto da Tim Burton, basato sul romanzo omonimo di Daniel Wallace.<br>
             La storia ruota attorno alla complessa relazione tra un padre, Edward Bloom, e suo figlio, Will.<br>
             Edward &#232; noto per raccontare storie incredibili e fantasiose sulla sua vita, che spesso sembrano<br>esagerate o addirittura impossibili.
@@ -28,58 +29,6 @@
             Gli elementi ripresi in questa rappresentazione sono i luoghi del racconto e i loro colori <br>preponderanti, che colorano lo sfondo, il minutaggio del film,
             sui quali si basa la dimensione dei <br>rettangoli dei luoghi, e soprattutto i personaggi presenti nel racconto di Edward.
         </p>
-
-        <div id="legenda">
-            <p class="titolo-legenda">LEGENDA DEI PERSONAGGI</p>
-            <div class="legenda-riga">
-                <img class="legend-icon" src="icons/edward.png">
-                <p class="icon-name">Edward</p> 
-            </div>
-            <div class="legenda-riga"> 
-                <img class="legend-icon" src="icons/strega.png">
-                <p class="icon-name">Strega</p> 
-            </div>
-            <div class="legenda-riga">
-                <img class="legend-icon" id="legend-calloway" src="icons/amoscalloway.png">
-                <p class="icon-name">Amos<br>Calloway</p>
-            </div>
-            <div class="legenda-riga">
-                <img class="legend-icon" src="icons/jenny.png">
-                <p class="icon-name">Jenny</p>
-            </div>
-            <div class="legenda-riga">
-                <img class="legend-icon" src="icons/donprice.png">
-                <p class="icon-name">Don Price</p>
-            </div>
-            <div class="legenda-riga">
-                <img class="legend-icon" src="icons/sandra.png">
-                <p class="icon-name">Sandra</p>
-            </div>
-            <div class="legenda-riga">
-                <img class="legend-icon" id="legend-karl" src="icons/karl.png">
-                <p class="icon-name">Karl</p>
-            </div>
-            <div class="legenda-riga">
-                <img class="legend-icon" src="icons/jenny.png">
-                <p class="icon-name">Jenny</p>
-            </div>
-            <div class="legenda-riga">
-                <img class="legend-icon" id="legend-winslow" src="icons/northerwinslow.png">
-                <p class="icon-name">Norther<br>Winslow</p>
-            </div>
-            <div class="legenda-riga">
-                <img class="legend-icon" src="icons/jingeping.png">
-                <p class="icon-name">Jing e Ping</p>
-            </div>
-            <div class="legenda-riga">
-                <img class="legend-icon" id="legend-will" src="icons/will.png">
-                <p class="icon-name">Will</p>
-            </div>
-            <div class="legenda-riga">
-                <img class="legend-icon" id="legend-josephine" src="icons/josephine.png">
-                <p class="icon-name">Josephine</p>
-            </div>
-        </div>
     </div>
     
         <div class="luogo"></div>
@@ -109,6 +58,33 @@
         <div class="luogo"></div>
         <div class="luogo"></div>
         <div class="luogo"></div>
+
+        <div id="text-container"></div>
+
+        <div id="img-container">
+            <p class="hover-text" id="amoscalloway-hover">Amos Calloway</p>
+            <img class="icon" id="img-amoscalloway" src="icons/amoscalloway.png" alt="Amos Calloway">
+            <p class="hover-text" id="northerwinslow-hover">Norther Winslow</p>
+            <img class="icon" id="img-northerwinslow" src="icons/northerwinslow.png" alt="Norther Winslow">
+            <p class="hover-text" id="donprice-hover">Don Price</p>
+            <img class="icon" id="img-donprice" src="icons/donprice.png" alt="Don Price">
+            <p class="hover-text" id="strega-hover">Strega</p>
+            <img class="icon" id="img-strega" src="icons/strega.png" alt="Strega">
+            <p class="hover-text" id="sandra-hover">Sandra</p>
+            <img class="icon" id="img-sandra" src="icons/sandra.png" alt="Sandra">
+            <p class="hover-text" id="edward-hover">Edward</p>
+            <img class="icon" id="img-edward" src="icons/edward.png" alt="Edward">
+            <p class="hover-text" id="karl-hover">Karl</p>
+            <img class="icon" id="img-karl" src="icons/karl.png" alt="Karl">
+            <p class="hover-text" id="jenny-hover">Jenny</p>
+            <img class="icon" id="img-jenny" src="icons/jenny.png" alt="Jenny">
+            <p class="hover-text" id="jingeping-hover">Jing e Ping</p>
+            <img class="icon" id="img-jingeping" src="icons/jingeping.png" alt="Jing e Ping">
+            <p class="hover-text" id="josephine-hover">Josephine</p>
+            <img class="icon" id="img-josephine" src="icons/josephine.png" alt="Josephine">
+            <p class="hover-text" id="will-hover">Will</p>
+            <img class="icon" id="img-will" src="icons/will.png" alt="Will">
+        </div>
 
     <section id="scrolly">
     <article>
@@ -227,40 +203,12 @@
         <div class="illustrazioni">
             <div class="container_lago2">
                 <img class="img1_lago2" src="images/lago2.PNG">
-                <img class="img1_lago2" src="immaginianimazioni/Lago_2tagliato.png">
                 <img class="img2_lago2" src="immaginianimazioni/nebbiaforesta.png">
             </div>
         </div>
     </div>
     </article>
     </section>
-
-    <div id="text-container"></div>
-
-    <div id="img-container">
-        <p class="hover-text" id="amoscalloway-hover">Amos Calloway</p>
-        <img class="icon" id="img-amoscalloway" src="icons/amoscalloway.png" alt="Amos Calloway">
-        <p class="hover-text" id="northerwinslow-hover">Norther Winslow</p>
-        <img class="icon" id="img-northerwinslow" src="icons/northerwinslow.png" alt="Norther Winslow">
-        <p class="hover-text" id="donprice-hover">Don Price</p>
-        <img class="icon" id="img-donprice" src="icons/donprice.png" alt="Don Price">
-        <p class="hover-text" id="strega-hover">Strega</p>
-        <img class="icon" id="img-strega" src="icons/strega.png" alt="Strega">
-        <p class="hover-text" id="sandra-hover">Sandra</p>
-        <img class="icon" id="img-sandra" src="icons/sandra.png" alt="Sandra">
-        <p class="hover-text" id="edward-hover">Edward</p>
-        <img class="icon" id="img-edward" src="icons/edward.png" alt="Edward">
-        <p class="hover-text" id="karl-hover">Karl</p>
-        <img class="icon" id="img-karl" src="icons/karl.png" alt="Karl">
-        <p class="hover-text" id="jenny-hover">Jenny</p>
-        <img class="icon" id="img-jenny" src="icons/jenny.png" alt="Jenny">
-        <p class="hover-text" id="jingeping-hover">Jing e Ping</p>
-        <img class="icon" id="img-jingeping" src="icons/jingeping.png" alt="Jing e Ping">
-        <p class="hover-text" id="josephine-hover">Josephine</p>
-        <img class="icon" id="img-josephine" src="icons/josephine.png" alt="Josephine">
-        <p class="hover-text" id="will-hover">Will</p>
-        <img class="icon" id="img-will" src="icons/will.png" alt="Will">
-    </div>
 
     <script>
         function togglePopup() {

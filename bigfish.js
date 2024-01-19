@@ -7,7 +7,7 @@ const datasetprova = await d3.csv("datasetprova.csv")
 const height = 15300;
 const marginLeft = 50;
 const marginRight = 10;
-const marginTop = 84.5;
+const marginTop = 91.8;
 const marginBottom = 50;
 const marginBottomExtended = 200; // Per aumentare lo scroll in fondo
 const width = window.innerWidth - marginLeft;
@@ -86,7 +86,7 @@ d3.select("body")
     .data(datasetprova)
     .join("div")
     .attr("class", "luogo")
-    .style("height", (d, i, nodes) => i < nodes.length - 1 ? (sScale(heightData[i]) - 86.2) + "px" : sScale(heightData[i]) + "px")
+    .style("height", (d, i, nodes) => i < nodes.length - 1 ? (sScale(heightData[i]) - 89.5) + "px" : sScale(heightData[i]) + "px")
     .style("width", (width - marginLeft - marginRight) + "px")
     .style("position", "absolute")
     .style("top", d => (sScale(d["START"]) + marginTop*17.25) + "px")  // Regola il valore top
@@ -99,7 +99,7 @@ d3.select("body")
     .data(datasetprova)
     .join("div")
     .attr("class", "luogo-copia")
-    .style("height", (d, i, nodes) => i < nodes.length - 1 ? (sScale(heightData[i]) - 86.2) + "px" : sScale(heightData[i]) + "px")
+    .style("height", (d, i, nodes) => i < nodes.length - 1 ? (sScale(heightData[i]) - 89.5) + "px" : sScale(heightData[i]) + "px")
     .style("width", (width - marginLeft - marginRight) + "px")
     .style("position", "absolute")
     .style("top", d => (sScale(d["START"]) + marginTop*17.25) + "px")  // Regola il valore top
@@ -590,6 +590,7 @@ function handleStepExit(response) {
   if (response.index === 0 && response.direction === "up") {
     document.documentElement.style.backgroundColor = ""; // Ripristina il colore di sfondo predefinito
     textContainer.style.opacity = 0;
+    imgEdward.style.left = "-9999px"
     imgEdward.style.opacity = 0;
     button.style.opacity = 0
     button.style.right = "-9999px"
@@ -599,6 +600,7 @@ function handleStepExit(response) {
   if (response.index === step.length - 1 && response.direction === "down") {
     document.documentElement.style.backgroundColor = "#1d1d1d";
     textContainer.style.opacity = 0;
+    imgEdward.style.opacity = 0;
     button.style.opacity = 0
     button.style.right = "-9999px"
   }
@@ -618,3 +620,20 @@ function init() {
 
 // kick things off
 init();
+
+
+// Ottieni l'elemento dell'immagine freccia
+var freccia = document.getElementById("freccia");
+
+// Aggiungi un gestore di eventi per l'evento di scroll
+window.addEventListener("scroll", function() {
+    // Controlla la posizione di scroll
+    var posizioneScroll = window.scrollY;
+
+    // Imposta la visibilità in base alla posizione di scroll
+    if (posizioneScroll > 150) {
+        freccia.style.opacity = "0"; // Nascondi l'immagine
+    } else {
+        freccia.style.opacity = "1"; // Mostra l'immagine
+    }
+});
