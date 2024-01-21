@@ -7,9 +7,9 @@ const datasetprova = await d3.csv("datasetprova.csv")
 const height = 15300;
 const marginLeft = 50;
 const marginRight = 10;
-const marginTop = 91.8;
+const marginTop = 86.5;
 const marginBottom = 50;
-const marginBottomExtended = 200; // Per aumentare lo scroll in fondo
+const marginBottomExtended = 250; // Per aumentare lo scroll in fondo
 const width = window.innerWidth - marginLeft;
 
 // Creazione di un elemento SVG
@@ -86,7 +86,7 @@ d3.select("body")
     .data(datasetprova)
     .join("div")
     .attr("class", "luogo")
-    .style("height", (d, i, nodes) => i < nodes.length - 1 ? (sScale(heightData[i]) - 89.5) + "px" : sScale(heightData[i]) + "px")
+    .style("height", (d, i, nodes) => i < nodes.length - 1 ? (sScale(heightData[i]) - 87) + "px" : sScale(heightData[i]) + "px")
     .style("width", (width - marginLeft - marginRight) + "px")
     .style("position", "absolute")
     .style("top", d => (sScale(d["START"]) + marginTop*17.25) + "px")  // Regola il valore top
@@ -99,7 +99,7 @@ d3.select("body")
     .data(datasetprova)
     .join("div")
     .attr("class", "luogo-copia")
-    .style("height", (d, i, nodes) => i < nodes.length - 1 ? (sScale(heightData[i]) - 89.5) + "px" : sScale(heightData[i]) + "px")
+    .style("height", (d, i, nodes) => i < nodes.length - 1 ? (sScale(heightData[i]) - 87) + "px" : sScale(heightData[i]) + "px")
     .style("width", (width - marginLeft - marginRight) + "px")
     .style("position", "absolute")
     .style("top", d => (sScale(d["START"]) + marginTop*17.25) + "px")  // Regola il valore top
@@ -179,10 +179,10 @@ var texts = ["Edward pesca in un lago il pesce gatto pi&#249; grande del mondo, 
             "",
             "Durante una messa, Edward scopre che i suoi muscoli e le sue ossa crescono troppo in fretta, cosa che lo porta a stare per tre anni a letto legato a macchinari, potendo solo consultare l&#8217;enciclopedia come mezzo di informazione.",
             "Edward si reca nella caverna dove vive un gigante di nome Karl che minaccia la citt&#224; di Ashton, a quel punto dopo una discussione entrambi decidono di andarsene insieme, verso nuovi orizzonti.",
-            "Dopo essersi divisi, Edward prende un sentiero cupo, arrivando nell'adorabile cittadina di Spectre: qui conosce Norther Winslow, un poeta, e Jenny, una bambina che si innamora di lui. Edward decide di non rimanere a Spectre, diventando il primo a farlo, per poi tornare in futuro, quando sar&#224; giusto farlo.",
+            "Dopo essersi divisi, Edward prende un sentiero cupo, arrivando nell'adorabile cittadina di Spectre: qui conosce Norther Winslow, un poeta, e Jenny, una bambina che si innamora di lui.<br><br>Edward decide di non rimanere a Spectre, diventando il primo a farlo, per poi tornare in futuro, quando sar&#224; giusto farlo.",
             "Edward si smarrisce all&#8217;interno del bosco, ancor pi&#249; spaventoso di notte, trovandosi in un attimo tra le grinfie di alberi, che per&#242; lo rilasciano. Uscendo dalla foresta, Edward ritrova Karl, e insieme riprendono la strada.",
             "",
-            "Edward e Karl arrivano al Callow Circus. Durante lo spettacolo, Edward vede una ragazza, della quale si innamora perdutamente a prima vista, ma non riesce a parlarci. Disperato, Edward chiede aiuto a Amos Calloway, il proprietario del circo, che si rivela amico di famiglia di questa ragazza. Amos dunque propone un lavoro non pagato ad Edward, dove la ricompensa &#232; un&#8217;informazione sulla ragazza una volta al mese. Una notte, Edward scopre che Amos &#232; un lupo mannaro: quando si sveglia il giorno dopo, Amos, riconoscente per non avergli fatto del male, gli rivela il nome della ragazza, Sandra.",
+            "Edward e Karl arrivano al Callow Circus. Durante lo spettacolo, Edward vede una ragazza, della quale si innamora perdutamente a prima vista, ma non riesce a parlarci. Disperato, Edward chiede aiuto a Amos Calloway, il proprietario del circo, che si rivela amico di famiglia di questa ragazza. Amos dunque propone un lavoro non pagato ad Edward, dove la ricompensa &#232; un&#8217;informazione sulla ragazza una volta al mese.<br><br>Una notte, Edward scopre che Amos &#232; un lupo mannaro: quando si sveglia il giorno dopo, Amos, riconoscente per non avergli fatto del male, gli rivela il nome della ragazza, Sandra.",
             "Edward arriva al college dove studia Sandra con i suoi fiori preferiti e si dichiara a lei, ma scopre che quest&#8217;ultima &#232; gi&#224; promessa a Don Price, concittadino di Edward. Don Price scopre le intenzioni di Edward e lo picchia, ma ci&#242; si ritorce contro di lui: Sandra, infatti, notando la violenza del fidanzato, lo lascia per stare con Edward.",
             "",
             "Mentre si trova in ospedale dopo il litigio con Don Price, Edward scopre di dover partire alla volta del Vietnam per il servizio di leva militare obbligatoria.",
@@ -191,9 +191,9 @@ var texts = ["Edward pesca in un lago il pesce gatto pi&#249; grande del mondo, 
             "Sandra apprende la morte di Edward, in quanto l&#8217;esercito lo ha dato per disperso. Dopo quattro mesi, per&#242;, Edward riesce a tornare da Sandra.",
             "",
             "Dopo l&#8217;esperienza dell&#8217;esercito, Edward inizia a lavorare come rappresentante di commercio.",
-            "Edward rincontra Norther Winslow nel bel mezzo di una rapina organizzata da quest&#8217;ultimo. Dopo una chiacchierata, Norther decide di partire per Wall Street per cercare la fortuna.",
+            "Edward rincontra Norther Winslow nel bel mezzo di una rapina organizzata da quest&#8217;ultimo.<br><br>Dopo una chiacchierata, Norther decide di partire per Wall Street per cercare la fortuna.",
             "",
-            "Una sera, tornando a casa, a causa di un temporale Edward finisce per caso a Spectre. Trovandola in fallimento, decide di comprarla per cinquantamila dollari. Non chiedeva soldi ai cittadini: voleva solo che la citt&#224; non morisse. Qui Edward ritrova Jenny, ormai cresciuta e non pi&#249; bambina. Si propone di sistemare la sua casa, ma lei rifiuta. Edward decide di sistemarla lo stesso, grazie anche all&#8217;aiuto di Karl, creando un legame con Jenny.",
+            "Una sera, tornando a casa, a causa di un temporale Edward finisce per caso a Spectre. Trovandola in fallimento, decide di comprarla per cinquantamila dollari. Non chiedeva soldi ai cittadini: voleva solo che la citt&#224; non morisse.<br><br>Qui Edward ritrova Jenny, ormai cresciuta e non pi&#249; bambina. Si propone di sistemare la sua casa, ma lei rifiuta. Edward decide di sistemarla lo stesso, grazie anche all&#8217;aiuto di Karl, creando un legame con Jenny.",
             "Jenny vorrebbe baciare Edward ma lui rifiuta, dicendo che &#232; innamorato di sua moglie. Jenny d&#224; a Edward l&#8217;atto di vendita della casa.",
             "",
             "Edward &#232; in punto di morte: Sandra, il figlio Will e la nuora Josephine lo portano via dall'ospedale.",
@@ -303,7 +303,7 @@ function showImagesForStep(index) {
   allImages.forEach(img => {
     img.style.opacity = 0;
     img.style.left = "-99999px";
-    img.style.filter = "drop-shadow(#ffffffa5 0 0 10px)"
+    img.style.filter = "drop-shadow(white 0 0 7px)"
   });
 
   const allHover = [hoverEdward, hoverStrega, hoverSandra, hoverDonPrice, hoverJenny, hoverAmosCalloway, hoverNortherWinslow, hoverWill, hoverJosephine, hoverKarl, hoverJingEPing];
